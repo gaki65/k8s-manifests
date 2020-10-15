@@ -9,6 +9,7 @@ spec:
                 - name: "http-port"
                   protocol: "TCP"
                   port: 8888
+                  targetPort: 80
         selector:
                 ingress-app: sample1
 ---
