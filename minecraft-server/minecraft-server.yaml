@@ -16,19 +16,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: minecraft-clusterip
-spec:
-  type: ClusterIP
-  ports:
-    - protocol: "TCP"
-      port: 25565
-      targetPort: 25565
-  selector:
-    app: minecraft-server
----
-apiVersion: v1
-kind: Service
-metadata:
   name: minecraft-lb
 spec:
   type: LoadBalancer
