@@ -193,7 +193,7 @@ alertmanager:
     ## alertmanager data Persistent Volume existing claim name
     ## Requires alertmanager.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: ""
+    existingClaim: "prometheus-alertmanager"
 
     ## alertmanager data Persistent Volume mount root path
     ##
@@ -201,7 +201,7 @@ alertmanager:
 
     ## alertmanager data Persistent Volume size
     ##
-    size: 2Gi
+    size: 1Gi
 
     ## alertmanager data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -289,10 +289,10 @@ alertmanager:
   ## Security context to be added to alertmanager pods
   ##
   securityContext:
-    runAsUser: 65534
+    runAsUser: 1000
     runAsNonRoot: true
-    runAsGroup: 65534
-    fsGroup: 65534
+    runAsGroup: 1000
+    fsGroup: 1000
 
   service:
     annotations: {}
