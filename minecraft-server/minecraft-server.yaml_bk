@@ -2,45 +2,45 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: minecraft-server2
+  name: minecraft-server
   labels:
-    app: minecraft-server2
+    app: minecraft-server
 spec:
   containers:
-    - name: minecraft-server2
+    - name: minecraft-server
       image: itzg/minecraft-server:1.8.0-multiarch
       env:
       - name: EULA
         value: "TRUE"
       volumeMounts:
       - mountPath: "/data"
-        name: minecraft-volume2
+        name: minecraft-volume
   volumes:
-    - name: minecraft-volume2
+    - name: minecraft-volume
       persistentVolumeClaim:
-        claimName: minecraft-pvc2
+        claimName: minecraft-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-pvc2
+  name: minecraft-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 5Gi
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: minecraft-lb2
+  name: minecraft-lb
 spec:
   type: LoadBalancer
   ports:
   - protocol: "TCP"
     port: 25565
     targetPort: 25565
-    nodePort: 30101
+    nodePort: 30100
   selector:
-    app: minecraft-server2
+    app: minecraft-server
