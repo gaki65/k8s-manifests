@@ -1,0 +1,137 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redmine-app-configmap
+data:
+  REDMINE_DB_POSTGRES: db
+  REDMINE_DB_DATABASE: redmine
+  REDMINE_DB_USERNAME: redmine
+  REDMINE_DB_PASSWORD: nyan
+  REDMINE_DB_ENCODING: utf8
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redmine-app
+spec:
+  containers:
+  - name: redmine
+    image: redmine
+    envFrom:
+    - configMapRef:
+        name: redmine-app-configmap  
+    volumeMounts:
+      - mountPath: /usr/src/redmine/files
+        name: redmine-app-files
+       - mountPath: /usr/src/redmine/log
+        name: redmine-app-log
+      - mountPath: /usr/src/redmine/plugins
+        name: redmine-app-plugins
+      - mountPath: /usr/src/redmine/themes
+        name: redmine-app-themes
+  volumes:
+    - name: redmine-app-files
+      persistentVolumeClaim:
+        claimName: redmine-app-files-pvc
+    - name: redmine-app-log
+      persistentVolumeClaim:
+        claimName: redmine-app-log-pvc
+    - name: redmine-app-plugins
+      persistentVolumeClaim:
+        claimName: redmine-app-plugins-pvc
+    - name: redmine-app-themes
+      persistentVolumeClaim:
+        claimName: redmine-app-themes-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redmine-app-files-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+spec:
+  capacity:
+    storage: "1Gi"
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.11.30
+    path: /var/redmine/redmine-app/files
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-app-files-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redmine-postgres-configmap
+data:
+  POSTGRES_DB: redmine
+  POSTGRES_USER: redmine
+  POSTGRES_PASSWORD: nyan
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redmine-postgres
+spec:
+  containers:
+  - name: postgres
+    image: postgres
+    envFrom:
+    - configMapRef:
+        name: redmine-postgres-configmap  
+    volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: redmine-postgres-vol
+  volumes:
+    - name: redmine-postgres-vol
+      persistentVolumeClaim:
+        claimName: redmine-postgres-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redmine-postgres-pv
+  labels:
+    name: redmine-postgres-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+spec:
+  capacity:
+    storage: "1Gi"
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /var/redmine/postgres
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      name: redmine-postgres-pv

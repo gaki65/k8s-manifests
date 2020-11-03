@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redmine-db-statefulset
+spec:
+  serviceName: redmine-db-statefulset
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redmine-db
+  template:
+    metadata:
+      labels:
+        app: redmine-db
+    spec:
+      containers:
+      - name: redmine-db
+        image: postgres
+        env:
+        - name: POSTGRES_DB
+          value: redmine
+        - name: POSTGRES_USER
+          value: redmine
+        - name: POSTGRES_PASSWORD
+          value: exsample
+        volumeMounts:
+        - name: db-vc
+          mountPath: /var/lib/postgresql/data
+        ports:
+        - containerPort: 5432
+          name: postgresdb
+  volumeClaimTemplates:
+  - metadata:
+      name: db-vc
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: nfs
+      selector:
+        matchLabels:
+          name: redmine-db-pv
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redmine-db
+spec:
+  ports:
+  - port: 5432
+    name: postgres
+  selector:
+    app: redmine-db
+  clusterIP: None
+
