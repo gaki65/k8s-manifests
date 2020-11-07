@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: date
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: date
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: date
+    spec:
+      containers:
+      - name: date
+        image: busybox
+        command: ["/bin/sh", "-c", "echo 'HELLO, PV!!!!' >> /mnt/date; while true; do date >> /mnt/date; sleep 1; done"]
+        volumeMounts:
+        - name: date-pv
+          mountPath: "/mnt"
+      volumes:
+      - name: date-pv
+        persistentVolumeClaim:
+          claimName: rbd-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rbd-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rbd
