@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redmine-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redmine-app
+  template:
+    metadata:
+      labels:
+        app: redmine-app
+    spec:
+      containers:
+        - name: redmine
+          image: redmine
+          env:
+            - name: REDMINE_DB_MYSQL
+              value: redmine-db
+            - name: REDMINE_DB_PASSWORD
+              value: redmine
+          volumeMounts:
+            - name: redmine-app-files-vol
+              mountPath: /usr/src/redmine/files
+      volumes:
+        - name: redmine-app-files-vol
+          persistentVolumeClaim:
+            claimName: redmine-app-files-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-app-files-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-ceph-block

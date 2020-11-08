@@ -1,0 +1,88 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redmine-files-pv
+  labels:
+    name: redmine-files-pv
+spec:
+  capacity:
+    storage: "1Gi"
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.11.30
+    path: /export/hdd1/redmine/redmine-app/files
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-files-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: "1Gi"
+  selector:
+    matchLabels:
+      name: redmine-files-pv
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redmine
+  labels:
+    app: redmine
+spec:
+  selector:
+    matchLabels:
+      app: redmine
+  template:
+    metadata:
+      labels:
+        app: redmine
+    spec:
+      containers:
+        - image: redmine:4.0.3
+          name: redmine
+          command: ['sh', '-c']
+          args: ['cp /usr/src/config/configuration.yml /usr/src/redmine/config/configuration.yml && /docker-entrypoint.sh rails server -b 0.0.0.0']
+          env:
+            - name: REDMINE_SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: redmine-appsettings
+                  key: secret_key_base
+            - name: REDMINE_DB_POSTGRES
+              valueFrom:
+                secretKeyRef:
+                  name: redmine-appsettings
+                  key: db_host
+            - name: REDMINE_DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: redmine-appsettings
+                  key: db_name
+            - name: REDMINE_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: redmine-appsettings
+                  key: db_username
+            - name: REDMINE_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redmine-appsettings
+                  key: db_password
+          volumeMounts:
+            - name: redmine-files-persistent-storage
+              mountPath: /usr/src/redmine/files
+            - name: configuration
+              mountPath: /usr/src/config
+      volumes:
+        - name: redmine-files-persistent-storage
+          persistentVolumeClaim:
+            claimName: redmine-files-pvc
+        - name: configuration
+          configMap:
+            name: redmine-configuration

@@ -1,0 +1,69 @@
+apiVersion: v1
+data:
+  my.cnf: |-
+    [mysqld]
+    skip-name-resolve
+    explicit_defaults_for_timestamp
+    basedir=/opt/bitnami/mariadb
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    tmpdir=/opt/bitnami/mariadb/tmp
+    max_allowed_packet=16M
+    bind-address=0.0.0.0
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+    log-error=/opt/bitnami/mariadb/logs/mysqld.log
+    character-set-server=UTF8
+    collation-server=utf8_general_ci
+
+    [client]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    default-character-set=UTF8
+    plugin_dir=/opt/bitnami/mariadb/plugin
+
+    [manager]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: redmine
+  creationTimestamp: "2020-11-08T06:44:38Z"
+  labels:
+    app: mariadb
+    app.kubernetes.io/managed-by: Helm
+    chart: mariadb-7.10.4
+    component: master
+    heritage: Helm
+    release: my-release
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:my.cnf: {}
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:chart: {}
+          f:component: {}
+          f:heritage: {}
+          f:release: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-11-08T06:44:38Z"
+  name: my-release-mariadb
+  namespace: redmine
+  resourceVersion: "7947272"
+  selfLink: /api/v1/namespaces/redmine/configmaps/my-release-mariadb
+  uid: ba68446c-09fa-4621-b33a-dfbeb77f3c48

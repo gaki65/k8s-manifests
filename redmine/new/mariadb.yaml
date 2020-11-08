@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redmine-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redmine-db
+  template:
+    metadata:
+      labels:
+        app: redmine-db
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: redmine
+            - name: MYSQL_DATABASE
+              value: redmine
+          ports:
+            - containerPort: 3306
+              name: redmine-db
+          volumeMounts:
+            - name: redmine-db-vol
+              mountPath: /bitnami/mariadb
+      volumes:
+        - name: redmine-db-vol
+          persistentVolumeClaim:
+            claimName: redmine-db-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: rook-ceph-block

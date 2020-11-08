@@ -2,16 +2,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  creationTimestamp: "2020-09-21T09:10:29Z"
   labels:
-    app: redmine-pod
-  name: redmine-pod
+    app: redmine-web
+  name: redmine-web
 spec:
   containers:
   - name: redmine-web
     env:
     - name: REDMINE_DB_MYSQL
-      value: 127.0.0.1
+      value: redmine-db
     - name: REDMINE_DB_DATABASE
       value: redmine
     - name: REDMINE_DB_USERNAME
@@ -34,35 +33,10 @@ spec:
     volumeMounts:
     - mountPath: /usr/src/redmine/files
       name: redmine-volume
-  - name: redmine-db
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: rootmine
-    - name: MYSQL_DATABASE
-      value: redmine
-    - name: MYSQL_USER
-      value: redmine
-    - name: MYSQL_PASSWORD
-      value: r3dmin3
-    image: docker.io/library/mariadb
-    resources: {}
-    securityContext:
-      allowPrivilegeEscalation: true
-      capabilities: {}
-      privileged: false
-      readOnlyRootFilesystem: false
-      seLinuxOptions: {}
-    workingDir: /
-    volumeMounts:
-    - mountPath: /var/lib/mysql
-      name: db-volume
   volumes:
   - name: redmine-volume
     persistentVolumeClaim:
       claimName: redmine-app-pvc
-  - name: db-volume
-    persistentVolumeClaim:
-      claimName: redmine-db-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -77,21 +51,9 @@ spec:
   storageClassName: rook-ceph-block
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: redmine-db-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: rook-ceph-block
----
-apiVersion: v1
 kind: Service
 metadata:
-  name: sample-lb-2
+  name: redmine-lb
 spec:
   type: LoadBalancer
   ports:
@@ -99,6 +61,6 @@ spec:
     protocol: "TCP"
     port: 3000
     targetPort: 3000
-    nodePort: 30342
+    nodePort: 30239
   selector:
-    app: redmine-pod
+    app: redmine-web

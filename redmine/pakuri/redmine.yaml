@@ -31,9 +31,9 @@ spec:
       readOnlyRootFilesystem: false
       seLinuxOptions: {}
     workingDir: /usr/src/redmine
-    volumeMounts:
-    - mountPath: /usr/src/redmine/files
-      name: redmine-volume
+#    volumeMounts:
+#    - mountPath: /usr/src/redmine/files
+#      name: redmine-volume
   - name: redmine-db
     env:
     - name: MYSQL_ROOT_PASSWORD
@@ -53,45 +53,22 @@ spec:
       readOnlyRootFilesystem: false
       seLinuxOptions: {}
     workingDir: /
-    volumeMounts:
-    - mountPath: /var/lib/mysql
-      name: db-volume
-  volumes:
-  - name: redmine-volume
-    persistentVolumeClaim:
-      claimName: redmine-app-pvc
-  - name: db-volume
-    persistentVolumeClaim:
-      claimName: redmine-db-pvc
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: redmine-app-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: rook-ceph-block
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: redmine-db-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: rook-ceph-block
+#    volumeMounts:
+#    - mountPath: /var/lib/mysql
+#      name: db-volume
+#  volumes:
+#  - name: redmine-volume
+#    hostPath:
+#      path: /var/test/redmine
+#  - name: db-volume
+#    hostPath:
+#      path: /var/test/mysql
+status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-lb-2
+  name: sample-lb
 spec:
   type: LoadBalancer
   ports:
@@ -99,6 +76,6 @@ spec:
     protocol: "TCP"
     port: 3000
     targetPort: 3000
-    nodePort: 30342
+    nodePort: 30123
   selector:
     app: redmine-pod

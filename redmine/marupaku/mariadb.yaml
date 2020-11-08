@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  serviceName: redmine-mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+      - env:
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mariadb-root-password
+              name: my-release-mariadb
+        - name: MARIADB_USER
+          value: bn_redmine
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mariadb-password
+              name: my-release-mariadb
+        - name: MARIADB_DATABASE
+          value: bitnami_redmine
+        image: mariadb
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - |
+              password_aux="${MARIADB_ROOT_PASSWORD:-}"
+              if [ -f "${MARIADB_ROOT_PASSWORD_FILE:-}" ]; then
+                  password_aux=$(cat $MARIADB_ROOT_PASSWORD_FILE)
+              fi
+              mysqladmin status -uroot -p$password_aux
+          failureThreshold: 3
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: mariadb
+        ports:
+        - containerPort: 3306
+          name: mysql
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - |
+              password_aux="${MARIADB_ROOT_PASSWORD:-}"
+              if [ -f "${MARIADB_ROOT_PASSWORD_FILE:-}" ]; then
+                  password_aux=$(cat $MARIADB_ROOT_PASSWORD_FILE)
+              fi
+              mysqladmin status -uroot -p$password_aux
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: data
+        - mountPath: /etc/mysql/my.cnf
+          name: config
+          subPath: my.cnf
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1001
+        runAsUser: 1001
+      serviceAccount: default
+      serviceAccountName: default
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: my-release-mariadb
+        name: config
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mariadb
+      name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 8Gi
+      storageClassName: rook-ceph-block

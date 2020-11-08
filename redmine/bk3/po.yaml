@@ -1,0 +1,67 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redmine-app-configmap
+data:
+  REDMINE_DB_POSTGRES: db
+  REDMINE_DB_DATABASE: redmine
+  REDMINE_DB_USERNAME: redmine
+  REDMINE_DB_PASSWORD: nyan
+  REDMINE_DB_ENCODING: utf8
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redmine-app
+spec:
+  containers:
+  - name: redmine
+    image: redmine
+    envFrom:
+    - configMapRef:
+        name: redmine-app-configmap  
+    volumeMounts:
+      - mountPath: /usr/src/redmine
+        name: redmine-app-vol
+    securityContext:
+      privileged: true
+  volumes:
+    - name: redmine-app-vol
+      persistentVolumeClaim:
+        claimName: redmine-app-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redmine-app-pv
+  labels:
+    name: redmine-app-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+spec:
+  capacity:
+    storage: "1Gi"
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.11.30
+    path: /export/hdd1/redmine/redmine-app
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-app-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      name: redmine-app-pv

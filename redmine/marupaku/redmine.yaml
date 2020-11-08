@@ -1,0 +1,310 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.11.66"],"port":80,"protocol":"TCP","serviceName":"redmine:my-release-redmine","allNodes":false}]'
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: redmine
+  creationTimestamp: "2020-11-08T06:20:19Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: redmine
+    helm.sh/chart: redmine-14.2.13
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app.kubernetes.io/instance: {}
+              f:app.kubernetes.io/managed-by: {}
+              f:app.kubernetes.io/name: {}
+              f:helm.sh/chart: {}
+          f:spec:
+            f:containers:
+              k:{"name":"my-release-redmine"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"REDMINE_DB_MYSQL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"REDMINE_DB_NAME"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"REDMINE_DB_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"REDMINE_DB_USERNAME"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"REDMINE_EMAIL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"REDMINE_LANG"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"REDMINE_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"REDMINE_USERNAME"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:livenessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":3000,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:readinessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/bitnami/redmine"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:serviceAccount: {}
+            f:serviceAccountName: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"redmine-data"}:
+                .: {}
+                f:name: {}
+                f:persistentVolumeClaim:
+                  .: {}
+                  f:claimName: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-11-08T06:20:19Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:replicas: {}
+        f:unavailableReplicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-11-08T06:20:19Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:field.cattle.io/publicEndpoints: {}
+    manager: rancher
+    operation: Update
+    time: "2020-11-08T06:20:19Z"
+  name: my-release-redmine
+  namespace: redmine
+  resourceVersion: "7941032"
+  selfLink: /apis/apps/v1/namespaces/redmine/deployments/my-release-redmine
+  uid: d1452275-926d-45fb-b4a8-9b34529ee268
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: my-release
+      app.kubernetes.io/name: redmine
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: my-release
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: redmine
+        helm.sh/chart: redmine-14.2.13
+    spec:
+      containers:
+      - env:
+        - name: REDMINE_DB_MYSQL
+          value: redmine-mariadb
+        - name: REDMINE_DB_NAME
+          value: bitnami_redmine
+        - name: REDMINE_DB_USERNAME
+          value: bn_redmine
+        - name: REDMINE_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mariadb-password
+              name: redmine-mariadb
+        - name: REDMINE_USERNAME
+          value: user
+        - name: REDMINE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: redmine-password
+              name: my-release-redmine
+        - name: REDMINE_EMAIL
+          value: user@example.com
+        - name: REDMINE_LANG
+          value: en
+        image: docker.io/bitnami/redmine:4.1.1-debian-10-r175
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http-redmine
+            scheme: HTTP
+          initialDelaySeconds: 300
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: my-release-redmine
+        ports:
+        - containerPort: 3000
+          name: http-redmine
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http-redmine
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /bitnami/redmine
+          name: redmine-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: my-release-redmine
+      serviceAccountName: my-release-redmine
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: redmine-data
+        persistentVolumeClaim:
+          claimName: my-release-redmine
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-release-redmine
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-ceph-block
