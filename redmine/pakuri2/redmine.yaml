@@ -1,0 +1,105 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-09-21T09:10:29Z"
+  labels:
+    app: redmine-pod
+  name: redmine-pod
+spec:
+  containers:
+  - name: redmine-web
+    env:
+    - name: REDMINE_DB_MYSQL
+      value: 127.0.0.1
+    - name: REDMINE_DB_DATABASE
+      value: redmine
+    - name: REDMINE_DB_USERNAME
+      value: redmine
+    - name: REDMINE_DB_PASSWORD
+      value: r3dmin3
+    image: docker.io/library/redmine
+    ports:
+    - containerPort: 3000
+      hostPort: 3000
+      protocol: TCP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    workingDir: /usr/src/redmine
+    volumeMounts:
+    - mountPath: /usr/src/redmine/files
+      name: redmine-volume
+  - name: redmine-db
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: rootmine
+    - name: MYSQL_DATABASE
+      value: redmine
+    - name: MYSQL_USER
+      value: redmine
+    - name: MYSQL_PASSWORD
+      value: r3dmin3
+    image: docker.io/library/mariadb
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    workingDir: /
+    volumeMounts:
+    - mountPath: /var/lib/mysql
+      name: db-volume
+  volumes:
+  - name: redmine-volume
+    persistentVolumeClaim:
+      claimName: redmine-app-pvc
+  - name: db-volume
+    persistentVolumeClaim:
+      claimName: redmine-db-pvc
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-app-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: rook-ceph-block
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: rook-ceph-block
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "http-port"
+    protocol: "TCP"
+    port: 3000
+    targetPort: 3000
+    nodePort: 30123
+  selector:
+    app: redmine-pod
