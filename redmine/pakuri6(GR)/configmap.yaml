@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redmine-app-configmap
+data:
+  REDMINE_DB_MYSQL: redmine-db
+  REDMINE_DB_DATABASE: redmine
+  REDMINE_DB_USERNAME: redmine
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redmine-db-configmap
+data:
+  MYSQL_DATABASE: redmine
+  MYSQL_USER: redmine
