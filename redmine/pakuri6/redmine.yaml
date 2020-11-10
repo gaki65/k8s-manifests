@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redmine-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redmine-web
+  template:
+    metadata:
+      labels:
+        app: redmine-web
+      name: redmine-web
+    spec:
+      containers:
+      - name: redmine-web
+        envFrom:
+        - configMapRef:
+            name: redmine-app-configmap
+        - secretRef:
+            name: redmine-app-secret
+        image: docker.io/library/redmine
+        ports:
+        - containerPort: 3000
+          hostPort: 3000
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          seLinuxOptions: {}
+        workingDir: /usr/src/redmine
+        volumeMounts:
+        - mountPath: /usr/src/redmine/files
+          name: redmine-volume
+      volumes:
+      - name: redmine-volume
+        persistentVolumeClaim:
+          claimName: redmine-app-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redmine-app-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: rook-ceph-block
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redmine-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "http-port"
+    protocol: "TCP"
+    port: 3000
+    targetPort: 3000
+    nodePort: 30789
+  selector:
+    app: redmine-web
