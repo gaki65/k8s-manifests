@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nyan
+  replicas: 3
+  template:
+    metadata:
+      name: nyan
+      labels:
+        app: nyan
+    spec:
+      containers:
+      - name: nyan
+        image: busybox
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        args:
+        - /bin/sh
+        - -c
+        - sleep 3600
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 20
