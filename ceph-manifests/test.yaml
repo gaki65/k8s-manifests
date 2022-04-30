@@ -36,4 +36,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: rbd
+  storageClassName: rook-ceph-block

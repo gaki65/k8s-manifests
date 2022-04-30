@@ -1,0 +1,22 @@
+externalURL: http://harbor.home.lab
+
+metrics:
+  enabled: true
+  core:
+    path: /metrics
+    port: 8001
+  registry:
+    path: /metrics
+    port: 8001
+  exporter:
+    path: /metrics
+    port: 8001
+
+expose:
+  type: loadBalancer
+  tls:
+    auto:
+      commonName: harbor.lab.home
+      secretName: harbor-secret
+      notarySecretName: notary-secret
+      loadBalancer.IP: "192.168.11.101"

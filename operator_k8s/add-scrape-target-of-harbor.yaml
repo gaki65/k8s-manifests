@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+    name: harbor-metrics-endpoint
+    labels:
+        release: prometheus-operator
+    namespace: prometheus
+subsets:
+    - addresses:
+      - ip: 192.168.11.40
+      ports:
+      - name: metrics
+        port: 30135
+        protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: harbor-metrics-endpoint
+    namespace: prometheus
+    labels:
+        release: prometheus-operator
+        k8s-app: harbor-metrics
+spec:
+    type: ExternalName
+    externalName: 192.168.11.40
+    ports:
+    - name: metrics
+      port: 30135
+      protocol: TCP
+      targetPort: 30125
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+    name: harbor-metrics-sm
+    labels:
+        release: prometheus-operator
+        prometheus: kube-prometheus
+    namespace: prometheus
+spec:
+    selector:
+        matchLabels:
+            release: prometheus-operator
+            k8s-app: harbor-metrics
+    endpoints:
+    - port: metrics
+      interval: 10s
+      honorLabels: true
+      path: /metrics

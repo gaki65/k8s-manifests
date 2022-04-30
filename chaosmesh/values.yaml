@@ -1,0 +1,13 @@
+timezone: "Asia/Tokyo"
+controllerManager:
+  imagePullPolicy: IfNotPresent
+chaosDaemon:
+  imagePullPolicy: IfNotPresent
+dashboard:
+  create: true
+  imagePullPolicy: IfNotPresent
+  service:
+    type:  NodePort
+  persistentVolume:
+    enable: true
+    

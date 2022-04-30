@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus
+    meta.helm.sh/release-namespace: prometheus
+  creationTimestamp: "2021-04-04T04:44:10Z"
+  labels:
+    app: prometheus-operator-prometheus
+    app.kubernetes.io/managed-by: Helm
+    chart: prometheus-operator-9.3.2
+    heritage: Helm
+    release: prometheus
+    self-monitor: "true"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:chart: {}
+          f:heritage: {}
+          f:release: {}
+          f:self-monitor: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":9090,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+          f:prometheus: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2021-04-04T04:44:10Z"
+  name: prometheus-prometheus-oper-prometheus
+  namespace: prometheus
+  resourceVersion: "13404"
+  uid: 5cad392e-c43d-4d11-bd71-ad06c578c31e
+spec:
+  type: NodePort
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+    nodePort: 30126
+  selector:
+    app: prometheus
+    prometheus: prometheus-prometheus-oper-prometheus
+  sessionAffinity: None
+status:
+  loadBalancer: {}

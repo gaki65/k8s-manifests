@@ -1,0 +1,93 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-svc1
+spec:
+  ports:
+     -  port: 8081
+        protocol: TCP
+        targetPort: 80
+  selector:
+    app: hello-world1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world1
+  template:
+    metadata:
+      labels:
+        app: hello-world1
+    spec:
+      containers:
+        - image: "strm/helloworld-http"
+          imagePullPolicy: Always
+          name: hello-world-container
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-svc2
+spec:
+  ports:
+     -  port: 8082
+        protocol: TCP
+        targetPort: 80
+  selector:
+    app: hello-world2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world2
+  template:
+    metadata:
+      labels:
+        app: hello-world2
+    spec:
+      containers:
+        - image: "strm/helloworld-http"
+          imagePullPolicy: Always
+          name: hello-world-container
+          ports:
+            - containerPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-test
+  annotations:
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/hello1"
+        backend:
+          service:
+            name: hello-world-svc1
+            port:
+              number: 8081
+      - pathType: Prefix
+        path: "/hello2"
+        backend:
+          service:
+            name: hello-world-svc2
+            port:
+              number: 8082
+---

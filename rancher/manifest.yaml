@@ -62,12 +62,12 @@ roleRef:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cattle-credentials-1f36158
+  name: cattle-credentials-d4fc0ef
   namespace: cattle-system
 type: Opaque
 data:
-  url: "aHR0cHM6Ly8xOTIuMTY4LjExLjQ="
-  token: "cXRxenZuMjdrbGoyam56cG56c3BobXprZDR4Zndxdms1YzRoOXNzN2J4N3ZoOTZwbTVuemc2"
+  url: "aHR0cHM6Ly9sb2NhbGhvc3Q="
+  token: "OHpxNXRuOGJqdjhiN25mczhramY3ZGNxbWg2YzljY2RsdnBwNW00ODVtNnJ4OWhxMnJsdGti"
   namespace: ""
 
 ---
@@ -140,14 +140,14 @@ spec:
           - name: CATTLE_FEATURES
             value: ""
           - name: CATTLE_SERVER
-            value: "https://192.168.11.4"
+            value: "https://localhost"
           - name: CATTLE_CA_CHECKSUM
-            value: "683ea6aac8cef25701cefbd994c372703630941619666fc07b6872e05865f098"
+            value: "849d2e3ad809469b0ce12c2867d0781b1fa03925f7dd589efe4f0f2f3b028d6e"
           - name: CATTLE_CLUSTER
             value: "true"
           - name: CATTLE_K8S_MANAGED
             value: "true"
-          image: rancher/rancher-agent:v2.5.2-rc1-linux-arm64
+          image: rancher/rancher-agent:v2.5.6-rc4-linux-arm64
           volumeMounts:
           - name: cattle-credentials
             mountPath: /cattle-credentials
@@ -155,7 +155,7 @@ spec:
       volumes:
       - name: cattle-credentials
         secret:
-          secretName: cattle-credentials-1f36158
+          secretName: cattle-credentials-d4fc0ef
           defaultMode: 320
 
 ---
@@ -189,7 +189,7 @@ spec:
       - operator: Exists
       containers:
       - name: agent
-        image: rancher/rancher-agent:v2.5.2-rc1-linux-arm64
+        image: rancher/rancher-agent:v2.5.6-rc4-linux-arm64
         imagePullPolicy: IfNotPresent
         env:
         - name: CATTLE_NODE_NAME
@@ -197,9 +197,9 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: CATTLE_SERVER
-          value: "https://192.168.11.4"
+          value: "https://localhost"
         - name: CATTLE_CA_CHECKSUM
-          value: "683ea6aac8cef25701cefbd994c372703630941619666fc07b6872e05865f098"
+          value: "849d2e3ad809469b0ce12c2867d0781b1fa03925f7dd589efe4f0f2f3b028d6e"
         - name: CATTLE_CLUSTER
           value: "false"
         - name: CATTLE_K8S_MANAGED
@@ -235,7 +235,7 @@ spec:
           type: DirectoryOrCreate
       - name: cattle-credentials
         secret:
-          secretName: cattle-credentials-1f36158
+          secretName: cattle-credentials-d4fc0ef
           defaultMode: 320
       - hostPath:
           path: /etc/docker/certs.d

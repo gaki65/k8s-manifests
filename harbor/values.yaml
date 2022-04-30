@@ -1,0 +1,18 @@
+ externalURL: 192.168.11.41:30130
+
+metrics:
+  enabled: true
+  core:
+    path: /metrics
+    port: 8001
+  registry:
+    path: /metrics
+    port: 8001
+  exporter:
+    path: /metrics
+    port: 8001
+
+expose:
+  type: nodePort
+  tls:
+    enabled: false

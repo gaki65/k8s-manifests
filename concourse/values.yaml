@@ -1,0 +1,7 @@
+concourse:
+  web:
+    externalUrl: http://192.168.11.40:30125
+    prometheus:
+      enabled: true
+      bindIp: 192.168.11.40
+#      bindPort: 30125
