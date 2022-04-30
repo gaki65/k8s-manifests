@@ -5,7 +5,7 @@ kind: Namespace
 metadata:
   annotations:
     "helm.sh/resource-policy": keep
-  name: concourse-main
+  name: concourse
   labels:
     app: concourse-web
     chart: "concourse-15.0.1"
@@ -132,7 +132,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: concourse-web-main
-  namespace: concourse-main
+  namespace: concourse
   labels:
     app: concourse-web
     chart: concourse-15.0.1
