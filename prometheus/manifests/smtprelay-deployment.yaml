@@ -36,3 +36,11 @@ spec:
         ports:
         - containerPort: 25
           name: smtp
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smtp-account
+data:
+  username: dHJpY29sb3Jla3A1MUBnbWFpbC5jb20K
+  password: cnlvdGExOTk1Cg==
