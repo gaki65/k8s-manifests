@@ -1,0 +1,3103 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-rbac-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+---
+apiVersion: v1
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==
+    github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+    gitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=
+    gitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf
+    gitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9
+    ssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+    vs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"ssh_known_hosts":"bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==\ngithub.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==\ngitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=\ngitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf\ngitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9\nssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\nvs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-ssh-known-hosts-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-ssh-known-hosts-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/name: argocd-ssh-known-hosts-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-ssh-known-hosts-cm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":null,"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-tls-certs-cm","app.kubernetes.io/part-of":"argocd"},"name":"argocd-tls-certs-cm","namespace":"argocd"}}
+  labels:
+    app.kubernetes.io/name: argocd-tls-certs-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-tls-certs-cm
+---
+apiVersion: v1
+data:
+  admin.password: JDJhJDEwJE5ZaU5aVm5qcW51MFp0amxPOHd2eGV1M2NleUFCd29IN1NnUUsxRDhHM1R4T2hMb2suRmZp
+  admin.passwordMtime: MjAyMi0wNC0zMFQxMzo1MTo1MVo=
+  server.secretkey: TlNzd3ZkdUwyWnlxQ2FMeStieWJmOEJJc1plR0lVU2t0YldBdUoyR29oVT0=
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZekNDQWt1Z0F3SUJBZ0lSQU5nRnVFQU1nZ3FwdEhHaEpDQzJBeVl3RFFZSktvWklodmNOQVFFTEJRQXcKRWpFUU1BNEdBMVVFQ2hNSFFYSm5ieUJEUkRBZUZ3MHlNakEwTVRneU16RXpNemRhRncweU16QTBNVGd5TXpFegpNemRhTUJJeEVEQU9CZ05WQkFvVEIwRnlaMjhnUTBRd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3CmdnRUtBb0lCQVFEUWJoMFRtSExMZWRIRVRwSVl1V2FHVzd4eTFRNzFmRW1FdXJSRVhLcTRJUGRsQ2MvbldGb00KMnJDMTh2TEw0OWFtTlBnRXlhWTBnNlp6YkszSXpMWlB0VHZTMS9HSGdYZm5xVU01WTA2OXRFSkNtaEc2ZHFDaQpJRWR6Z2FmcXo3WGtaZlhmWTlnalBhUHQrMWxjeFFaWGVGOW4vVS8weGhqODcwNTFNZXU1ZjZlL3Bod1cvWlg2CkZZVHVGL3RYMmVscVY2ZkMzMGorQ01PRnhydDU1K1BLbzVYR1pHNjdvRDRYSXFXdk9kbGYzT2pSNVZJNFYwQkoKYkRML3lrRFZJbWdtVG9YbzFnUWsxSWVqMmprSEtwdnlyN1V5U2gybUI2em5RWGVJeFBMMW5vZVoyOW5YdEVQWApWVWFnZDViSHhpZWhVNGxSdnBIZ0ZqTXYzTjNXOHpHTEFnTUJBQUdqZ2JNd2diQXdEZ1lEVlIwUEFRSC9CQVFECkFnV2dNQk1HQTFVZEpRUU1NQW9HQ0NzR0FRVUZCd01CTUF3R0ExVWRFd0VCL3dRQ01BQXdld1lEVlIwUkJIUXcKY29JSmJHOWpZV3hvYjNOMGdnMWhjbWR2WTJRdGMyVnlkbVZ5Z2hSaGNtZHZZMlF0YzJWeWRtVnlMbUZ5WjI5agpaSUlZWVhKbmIyTmtMWE5sY25abGNpNWhjbWR2WTJRdWMzWmpnaVpoY21kdlkyUXRjMlZ5ZG1WeUxtRnlaMjlqClpDNXpkbU11WTJ4MWMzUmxjaTVzYjJOaGJEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFYdmRJNnh5b01hVDMKVG16a1NyeHA5M2Q5OVBPSUlGV010OTdrRnpjcGJsTWJXRjVxVWc3SUZKa3MvbmtodHNIWHRzRm9VcWhTWjFUYwpkNVBaa1dYMU9naksrV1dtbG1BMzZvbHpPMlNYMUZzTitjZkY3NW5icTZldHNpN1FhRTBwOUM3VWd3Vm1qMitpCkFvRHJtcHdGa1FHUEVjOTR5TC9Ob2pwR05JYWU1SWhFTCtnQnIxWi81Q0kxeDNXUG9uV1cwVjM0VDhKRXJxQXUKZTFxeUNGdjRVbWlTaVJjYWIxTlRYSkVweHV5aHpnb1hUOVc3SDFZNUZWcXZ3ZnFGT0Vtb2RjZWg2azlHcEpvNwo5cGphdVhaOXVTU2ZRRkdVcWNqVFZlMjArWXgyblhzd1FYWkJSZEVUaHJUdUNlZFEzMnJjK3ZKTEZ5dkhFYkhICmNkUGdyOU1pV2c9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBMEc0ZEU1aHl5M25SeEU2U0dMbG1obHU4Y3RVTzlYeEpoTHEwUkZ5cXVDRDNaUW5QCjUxaGFETnF3dGZMeXkrUFdwalQ0Qk1tbU5JT21jMnl0eU15MlQ3VTcwdGZ4aDRGMzU2bERPV05PdmJSQ1Fwb1IKdW5hZ29pQkhjNEduNnMrMTVHWDEzMlBZSXoyajdmdFpYTVVHVjNoZlovMVA5TVlZL085T2RUSHJ1WCtudjZZYwpGdjJWK2hXRTdoZjdWOW5wYWxlbnd0OUkvZ2pEaGNhN2VlZmp5cU9WeG1SdXU2QStGeUtscnpuWlg5em8wZVZTCk9GZEFTV3d5LzhwQTFTSm9KazZGNk5ZRUpOU0hvOW81QnlxYjhxKzFNa29kcGdlczUwRjNpTVR5OVo2SG1kdloKMTdSRDExVkdvSGVXeDhZbm9WT0pVYjZSNEJZekw5emQxdk14aXdJREFRQUJBb0lCQUJHOG5SclN5VW9KZHRGVwp3bFg2U1FBOEJFQmRZeVYreXg3UmFJKzh0d1p1UDc5SVkzblRhZTVZR2R1UjdobHRyUkY5eG5GWjI1dnliQks4CmQ5bHptandVTnlBTklrK2VzOTV4NS9lVlBOa2w0dEdhSE5JYVVEY2J1aGpaT3JuZnJTSGZqMW5RUEU5YmFuelEKKzl6S0kyMEVJRkpRR3lMQVROWVJZMExUMmJSeVFoTXZhV2d0RVZWMEhQbmVsRFJhVVlqQy9KUmpLaU56YzRmMwpPbGpqTUhwQ2w0WWdZQS8yUWNWOGRkWW56T0hSSENTeXV1dkRtN1luRkJ0Sy9mUGozS0xPUFhWaEJBaXl3ZkszCkZSdkZzZDFSei9oYURaYTZDNWxCZ0QvQ1luZzI5TGJCZlNVeENldisvZVNHcjBLaGJjdm11MHVWdFJXS3VWSisKbituVlMya0NnWUVBL0dQMWFGNzFNNmphcXR5OHArS09Yai9zbm1SNE5pODRwQUg5OWdXc0FEaHI3RGpZcFMvawpzbk04T0dIK2crZG9XaGtUUnFPbThXZlVvdE5JQTVnQVBPVkNUSlFvdVkwSG8wSDRNcFpnVVFnU0hCbkNONkJOClJtM0hjT3NOalh1dkcyTC9rN1FzWVJUanF2UytpendvSDl2M3B4YUhxTkRFa0NxUkhkTHR6Z2NDZ1lFQTAyazEKa0VGQ3FEL1A3S2pEd0dPQnR0REt1bkhVelk3am9mT1JsTzN4amplYUlqNk5TeDB2R0ZnYW1vaVp6TlhlTG9TNgpBbmdvcExyL1ZtazcwQ0lhOENXREFpQ09NanRRMVVJMVpJeExocGJuV2I0T0tyKytQYjZ4aTRubk4zUkZDT1RTCm81RFJKRGNoK01pcE4rcy9SSEIxMnc1U1NKNDVJWVRRL0xsZm4xMENnWUVBeGZOOFFiemdZZ0VZYUJReW54WXgKQlRqcjA1c0hNYkE5bzF5d20rbjg2anRXWWZKLzhLY3NuczJFdU5BYTk4ZGliKy9rejIyQmZTc3JlZjF1S090cApuRmxQYzVKc2tvTkxMeitKYzl1L2RTNTRUYlBpUVJDb0t3bms5K3BUT2RsOUVHVElBVWU1MnZhd1RhQWhaa0RyClUzbUp0bklVT2xKcktJdEtQL0wwY3JjQ2dZQlo5V2ZjZFZpVzNXaHRqTGFYTkFCck9WYzZsTnQzaUxqbUhnMngKc0xwYnlOOG1lVFdJWStlNVZTd2syOEdPUHVjbkprVThiY0xscmNpZkRYSnRNMFlCTUFVYUw1NHlVN2ttdGVDZwpZMjV6Mjl5Zi9GWnM3R0JZUjcrbTM4eHFkV2cyeTUreUNCcG1iYXRnQUlxNUI3cEpOZzJBWkF5eFo5cHBuK21KCjBKdVc1UUtCZ1FEa0R3dHVycU5xQjNFdDFWY1pMK0wyMmFBVGNTNFczUlJudEdvZ0twS3pwZHpXenpHMTd1L3oKb1pHTlhFbVQ2V0o5ZXhYa2YyT1pYU3ZIZm0wNGpDZWdvZGdZMjNnUkZaK3VzNlY4VCtsaEdhKzBlNDM4Z0c4Mwpwa1pHbjRCMUpDcE56U0Yyd2xoTXo2UXdCa3E4VnRvUSs2OFdnTDdSTWFNTVdMdFI5SU9NTkE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+kind: Secret
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Secret","metadata":{"annotations":{},"labels":{"app.kubernetes.io/name":"argocd-secret","app.kubernetes.io/part-of":"argocd"},"name":"argocd-secret","namespace":"argocd"},"type":"Opaque"}
+  labels:
+    app.kubernetes.io/name: argocd-secret
+    app.kubernetes.io/part-of: argocd
+  name: argocd-secret
+type: Opaque
+---
+apiVersion: v1
+data:
+  config: eyJ0bHNDbGllbnRDb25maWciOnsiaW5zZWN1cmUiOmZhbHNlfX0=
+  name: aW4tY2x1c3Rlcg==
+  server: aHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3Zj
+kind: Secret
+metadata:
+  annotations:
+    argocd.argoproj.io/refresh: "2022-04-30T07:32:46Z"
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+  name: cluster-kubernetes.default.svc-3396314289
+type: Opaque
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: concourse
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: concourse
+    server: https://kubernetes.default.svc
+  roles:
+  - description: admin
+    name: admin
+    policies:
+    - p, proj:concourse:admin, applications, *, concourse/*, allow
+  sourceRepos:
+  - '*'
+status:
+  jwtTokensByRole:
+    admin: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+status: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: elastic
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  roles:
+  - description: admin
+    name: admin
+    policies:
+    - p, proj:elastic:admin, applications, *, elastic/*, allow
+  sourceRepos:
+  - '*'
+status:
+  jwtTokensByRole:
+    admin: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: harbor
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  roles:
+  - description: admin
+    name: admin
+    policies:
+    - p, proj:harbor:admin, applications, *, harbor/*, allow
+  sourceRepos:
+  - '*'
+status:
+  jwtTokensByRole:
+    admin: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prometheus
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  roles:
+  - description: admin
+    name: admin
+    policies:
+    - p, proj:prometheus:admin, applications, *, prometheus/*, allow
+  sourceRepos:
+  - '*'
+status:
+  jwtTokensByRole:
+    admin: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: concourse
+spec:
+  destination:
+    namespace: concourse
+    server: https://kubernetes.default.svc
+  project: concourse
+  source:
+    path: concourse/manifest_now
+    repoURL: https://github.com/gaki65/k8s-manifests.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-04-30T09:51:48Z"
+    deployedAt: "2022-04-30T09:51:49Z"
+    id: 0
+    revision: b239a527d56168a44939095f677a5bb9bda4b69e
+    source:
+      path: concourse/manifest_now
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-04-30T10:01:41Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        resources:
+        - kind: PersistentVolume
+          name: concourse-postgres-pv
+        revision: b239a527d56168a44939095f677a5bb9bda4b69e
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2022-04-30T10:01:40Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/concourse-postgres-pv created
+        name: concourse-postgres-pv
+        namespace: concourse
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: b239a527d56168a44939095f677a5bb9bda4b69e
+      source:
+        path: concourse/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+  reconciledAt: "2022-04-30T14:37:42Z"
+  resources:
+  - kind: ConfigMap
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1
+  - kind: Namespace
+    name: concourse
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: concourse-postgres-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: concourse-worker-pv-1
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: concourse-worker-pv-2
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: concourse-postgresql
+    namespace: concourse
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: concourse-web
+    namespace: concourse
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-postgresql
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-postgresql-headless
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-web-export
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-web-prometheus
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-web-worker-gateway
+    namespace: concourse
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: concourse-web
+    namespace: concourse
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: concourse-web
+    namespace: concourse
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: statefulset rolling update complete 1 pods at revision concourse-postgresql-76768876fd...
+      status: Healthy
+    kind: StatefulSet
+    name: concourse-postgresql
+    namespace: concourse
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: statefulset rolling update complete 2 pods at revision concourse-worker-86f4947cb...
+      status: Healthy
+    kind: StatefulSet
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1
+  - group: policy
+    kind: PodDisruptionBudget
+    name: concourse-worker
+    namespace: concourse
+    status: Synced
+    version: v1beta1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: concourse-web
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: concourse-web-main
+    namespace: concourse
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - concourse/concourse:7.1.0
+    - docker.io/bitnami/postgresql:11.8.0-debian-10-r76
+  sync:
+    comparedTo:
+      destination:
+        namespace: concourse
+        server: https://kubernetes.default.svc
+      source:
+        path: concourse/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    status: Synced
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: filebeat
+spec:
+  destination:
+    namespace: elastic-monitoring
+    server: https://kubernetes.default.svc
+  project: elastic
+  source:
+    path: elasticsearch/filebeat/manifest_now
+    repoURL: https://github.com/gaki65/k8s-manifests.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-04-30T11:01:33Z"
+    deployedAt: "2022-04-30T11:01:33Z"
+    id: 0
+    revision: 54589aaddc51e184a25bb3c8ec5a11a29811c3b5
+    source:
+      path: elasticsearch/filebeat/manifest_now
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-04-30T11:01:33Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 54589aaddc51e184a25bb3c8ec5a11a29811c3b5
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2022-04-30T11:01:33Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/filebeat configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/filebeat-config configured
+        name: filebeat-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/filebeat reconciled. reconciliation
+          required update. clusterrole.rbac.authorization.k8s.io/filebeat configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/filebeat reconciled.
+          reconciliation required update. clusterrolebinding.rbac.authorization.k8s.io/filebeat
+          configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/filebeat-kubeadm-config reconciled.
+          reconciliation required update. role.rbac.authorization.k8s.io/filebeat-kubeadm-config
+          configured
+        name: filebeat-kubeadm-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/filebeat reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/filebeat configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/filebeat-kubeadm-config reconciled.
+          reconciliation required update. rolebinding.rbac.authorization.k8s.io/filebeat-kubeadm-config
+          configured
+        name: filebeat-kubeadm-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/filebeat reconciled. reconciliation
+          required update. rolebinding.rbac.authorization.k8s.io/filebeat configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: DaemonSet
+        message: daemonset.apps/filebeat configured
+        name: filebeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 54589aaddc51e184a25bb3c8ec5a11a29811c3b5
+      source:
+        path: elasticsearch/filebeat/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+  reconciledAt: "2022-04-30T14:37:42Z"
+  resources:
+  - kind: ConfigMap
+    name: filebeat-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: filebeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: DaemonSet
+    name: filebeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: filebeat
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: filebeat
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: filebeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: filebeat-kubeadm-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: filebeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: filebeat-kubeadm-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - docker.elastic.co/beats/filebeat:7.14.2
+  sync:
+    comparedTo:
+      destination:
+        namespace: elastic-monitoring
+        server: https://kubernetes.default.svc
+      source:
+        path: elasticsearch/filebeat/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    status: Synced
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor
+spec:
+  destination:
+    namespace: harbor
+    server: https://kubernetes.default.svc
+  project: harbor
+  source:
+    path: harbor2/manifest_now
+    repoURL: https://github.com/gaki65/k8s-manifests.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-04-30T10:10:19Z"
+    deployedAt: "2022-04-30T10:10:20Z"
+    id: 0
+    revision: 5fc7cba80b8a895b3f2ee7d68fbc367bd8896c56
+    source:
+      path: harbor2/manifest_now
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-04-30T10:10:20Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 5fc7cba80b8a895b3f2ee7d68fbc367bd8896c56
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2022-04-30T10:10:19Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-core configured
+        name: harbor-harbor-core
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-chartmuseum configured
+        name: harbor-harbor-chartmuseum
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-registry configured
+        name: harbor-harbor-registry
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-jobservice configured
+        name: harbor-harbor-jobservice
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-notary-server configured
+        name: harbor-harbor-notary-server
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-nginx configured
+        name: harbor-harbor-nginx
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-database configured
+        name: harbor-harbor-database
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-trivy configured
+        name: harbor-harbor-trivy
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/harbor-harbor-exporter configured
+        name: harbor-harbor-exporter
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-chartmuseum configured
+        name: harbor-harbor-chartmuseum
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-jobservice configured
+        name: harbor-harbor-jobservice
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-exporter-env configured
+        name: harbor-harbor-exporter-env
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-core configured
+        name: harbor-harbor-core
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-registry configured
+        name: harbor-harbor-registry
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-jobservice-env configured
+        name: harbor-harbor-jobservice-env
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-portal configured
+        name: harbor-harbor-portal
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/harbor-harbor-nginx configured
+        name: harbor-harbor-nginx
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-registry-pv configured
+        name: harbor-registry-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-dbdata-pv configured
+        name: harbor-dbdata-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-jobservice-pv configured
+        name: harbor-jobservice-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-chartmuseum-pv configured
+        name: harbor-chartmuseum-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-data-pv configured
+        name: harbor-data-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/harbor-data2-pv configured
+        name: harbor-data2-pv
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/harbor-harbor-chartmuseum configured
+        name: harbor-harbor-chartmuseum
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/harbor-harbor-registry configured
+        name: harbor-harbor-registry
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/harbor-harbor-jobservice configured
+        name: harbor-harbor-jobservice
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-registry configured
+        name: harbor-harbor-registry
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-exporter configured
+        name: harbor-harbor-exporter
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor configured
+        name: harbor
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-portal configured
+        name: harbor-harbor-portal
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-core configured
+        name: harbor-harbor-core
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-jobservice configured
+        name: harbor-harbor-jobservice
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-notary-signer configured
+        name: harbor-harbor-notary-signer
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-notary-server configured
+        name: harbor-harbor-notary-server
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-chartmuseum configured
+        name: harbor-harbor-chartmuseum
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-database configured
+        name: harbor-harbor-database
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-redis configured
+        name: harbor-harbor-redis
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/harbor-harbor-trivy configured
+        name: harbor-harbor-trivy
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-notary-server configured
+        name: harbor-harbor-notary-server
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-notary-signer configured
+        name: harbor-harbor-notary-signer
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-core configured
+        name: harbor-harbor-core
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-exporter configured
+        name: harbor-harbor-exporter
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-portal configured
+        name: harbor-harbor-portal
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-nginx configured
+        name: harbor-harbor-nginx
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-registry configured
+        name: harbor-harbor-registry
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-jobservice configured
+        name: harbor-harbor-jobservice
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/harbor-harbor-chartmuseum configured
+        name: harbor-harbor-chartmuseum
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: StatefulSet
+        message: statefulset.apps/harbor-harbor-database configured
+        name: harbor-harbor-database
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: StatefulSet
+        message: statefulset.apps/harbor-harbor-redis configured
+        name: harbor-harbor-redis
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: StatefulSet
+        message: statefulset.apps/harbor-harbor-trivy configured
+        name: harbor-harbor-trivy
+        namespace: harbor
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 5fc7cba80b8a895b3f2ee7d68fbc367bd8896c56
+      source:
+        path: harbor2/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+  reconciledAt: "2022-04-30T14:37:42Z"
+  resources:
+  - kind: ConfigMap
+    name: harbor-harbor-chartmuseum
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-core
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-exporter-env
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-jobservice
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-jobservice-env
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-nginx
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-portal
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: harbor-harbor-registry
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-chartmuseum-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-data-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-data2-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-dbdata-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-jobservice-pv
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: harbor-registry-pv
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: harbor-harbor-chartmuseum
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: harbor-harbor-jobservice
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: harbor-harbor-registry
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-chartmuseum
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-core
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-database
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-exporter
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-jobservice
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-nginx
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-notary-server
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-registry
+    namespace: harbor
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: harbor-harbor-trivy
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-chartmuseum
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-core
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-database
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-exporter
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-jobservice
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-notary-server
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-notary-signer
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-portal
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-redis
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-registry
+    namespace: harbor
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: harbor-harbor-trivy
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-chartmuseum
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-core
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-exporter
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-jobservice
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-nginx
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-notary-server
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-notary-signer
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-portal
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: harbor-harbor-registry
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: 'partitioned roll out complete: 1 new pods have been updated...'
+      status: Healthy
+    kind: StatefulSet
+    name: harbor-harbor-database
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: 'partitioned roll out complete: 1 new pods have been updated...'
+      status: Healthy
+    kind: StatefulSet
+    name: harbor-harbor-redis
+    namespace: harbor
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      message: 'partitioned roll out complete: 1 new pods have been updated...'
+      status: Healthy
+    kind: StatefulSet
+    name: harbor-harbor-trivy
+    namespace: harbor
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - goharbor/chartmuseum-photon:v2.2.1
+    - goharbor/harbor-core:v2.2.1
+    - goharbor/harbor-db:v2.2.1
+    - goharbor/harbor-exporter:v2.2.1
+    - goharbor/harbor-jobservice:v2.2.1
+    - goharbor/harbor-portal:v2.2.1
+    - goharbor/harbor-registryctl:v2.2.1
+    - goharbor/nginx-photon:v2.2.1
+    - goharbor/notary-server-photon:v2.2.1
+    - goharbor/notary-signer-photon:v2.2.1
+    - goharbor/redis-photon:v2.2.1
+    - goharbor/registry-photon:v2.2.1
+    - goharbor/trivy-adapter-photon:v2.2.1
+  sync:
+    comparedTo:
+      destination:
+        namespace: harbor
+        server: https://kubernetes.default.svc
+      source:
+        path: harbor2/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    status: Synced
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metricbeat
+spec:
+  destination:
+    namespace: elastic-monitoring
+    server: https://kubernetes.default.svc
+  project: elastic
+  source:
+    path: elasticsearch/metricbeat/manifest_now
+    repoURL: https://github.com/gaki65/k8s-manifests.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-04-30T10:59:54Z"
+    deployedAt: "2022-04-30T10:59:54Z"
+    id: 0
+    revision: 0071c13243395580a1082a3824e73fcc4f81f745
+    source:
+      path: elasticsearch/metricbeat/manifest_now
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-04-30T10:59:54Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 0071c13243395580a1082a3824e73fcc4f81f745
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2022-04-30T10:59:54Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/metricbeat configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/metricbeat-daemonset-config configured
+        name: metricbeat-daemonset-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/metricbeat-daemonset-modules configured
+        name: metricbeat-daemonset-modules
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/metricbeat reconciled. reconciliation
+          required update. clusterrole.rbac.authorization.k8s.io/metricbeat configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/metricbeat reconciled.
+          reconciliation required update. clusterrolebinding.rbac.authorization.k8s.io/metricbeat
+          configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/metricbeat reconciled. reconciliation
+          required update. role.rbac.authorization.k8s.io/metricbeat configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/metricbeat-kubeadm-config reconciled.
+          reconciliation required update. role.rbac.authorization.k8s.io/metricbeat-kubeadm-config
+          configured
+        name: metricbeat-kubeadm-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/metricbeat reconciled. reconciliation
+          required update. rolebinding.rbac.authorization.k8s.io/metricbeat configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/metricbeat-kubeadm-config reconciled.
+          reconciliation required update. rolebinding.rbac.authorization.k8s.io/metricbeat-kubeadm-config
+          configured
+        name: metricbeat-kubeadm-config
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: DaemonSet
+        message: daemonset.apps/metricbeat configured
+        name: metricbeat
+        namespace: elastic-monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 0071c13243395580a1082a3824e73fcc4f81f745
+      source:
+        path: elasticsearch/metricbeat/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+  reconciledAt: "2022-04-30T14:37:42Z"
+  resources:
+  - kind: ConfigMap
+    name: metricbeat-daemonset-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: metricbeat-daemonset-modules
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: metricbeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: DaemonSet
+    name: metricbeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: metricbeat
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: metricbeat
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: metricbeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: metricbeat-kubeadm-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: metricbeat
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: metricbeat-kubeadm-config
+    namespace: elastic-monitoring
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - docker.elastic.co/beats/metricbeat:7.14.2
+  sync:
+    comparedTo:
+      destination:
+        namespace: elastic-monitoring
+        server: https://kubernetes.default.svc
+      source:
+        path: elasticsearch/metricbeat/manifest_now
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    status: Synced
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: prometheus
+  source:
+    path: prometheus/manifests
+    repoURL: https://github.com/gaki65/k8s-manifests.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2022-04-30T10:19:06Z"
+    deployedAt: "2022-04-30T10:19:08Z"
+    id: 0
+    revision: 5fc7cba80b8a895b3f2ee7d68fbc367bd8896c56
+    source:
+      path: prometheus/manifests
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  - deployStartedAt: "2022-04-30T13:38:05Z"
+    deployedAt: "2022-04-30T13:38:08Z"
+    id: 1
+    revision: a241b95868fc824d744302760cbb03726268d990
+    source:
+      path: prometheus/manifests
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  - deployStartedAt: "2022-04-30T13:44:04Z"
+    deployedAt: "2022-04-30T13:44:07Z"
+    id: 2
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    source:
+      path: prometheus/manifests
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  - deployStartedAt: "2022-04-30T13:45:38Z"
+    deployedAt: "2022-04-30T13:45:40Z"
+    id: 3
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    source:
+      path: prometheus/manifests
+      repoURL: https://github.com/gaki65/k8s-manifests.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2022-04-30T13:45:40Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2022-04-30T13:45:38Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/prometheus-adapter unchanged
+        name: prometheus-adapter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/node-exporter unchanged
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/alertmanager-main unchanged
+        name: alertmanager-main
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/grafana unchanged
+        name: grafana
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ServiceAccount
+        message: serviceaccount/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/grafana-datasources unchanged
+        name: grafana-datasources
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/alertmanager-main configured
+        name: alertmanager-main
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/smtp-account unchanged
+        name: smtp-account
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/grafana-config unchanged
+        name: grafana-config
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-persistentvolumesusage unchanged
+        name: grafana-dashboard-persistentvolumesusage
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-cluster-total unchanged
+        name: grafana-dashboard-cluster-total
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-workload-total unchanged
+        name: grafana-dashboard-workload-total
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-pod-total unchanged
+        name: grafana-dashboard-pod-total
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-coredns-dashboard unchanged
+        name: grafana-dashboard-coredns-dashboard
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-prometheus-dashboard unchanged
+        name: grafana-dashboard-prometheus-dashboard
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/adapter-config unchanged
+        name: adapter-config
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-prometheus unchanged
+        name: grafana-dashboard-prometheus
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-controller-manager unchanged
+        name: grafana-dashboard-controller-manager
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-cluster unchanged
+        name: grafana-dashboard-k8s-resources-cluster
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-node unchanged
+        name: grafana-dashboard-k8s-resources-node
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-prometheus-remote-write unchanged
+        name: grafana-dashboard-prometheus-remote-write
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-namespace unchanged
+        name: grafana-dashboard-k8s-resources-namespace
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-proxy unchanged
+        name: grafana-dashboard-proxy
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-node-cluster-rsrc-use unchanged
+        name: grafana-dashboard-node-cluster-rsrc-use
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-statefulset unchanged
+        name: grafana-dashboard-statefulset
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-scheduler unchanged
+        name: grafana-dashboard-scheduler
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-nodes unchanged
+        name: grafana-dashboard-nodes
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-kubelet unchanged
+        name: grafana-dashboard-kubelet
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-namespace-by-pod unchanged
+        name: grafana-dashboard-namespace-by-pod
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-namespace-by-workload unchanged
+        name: grafana-dashboard-namespace-by-workload
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-workloads-namespace unchanged
+        name: grafana-dashboard-k8s-resources-workloads-namespace
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-node-rsrc-use unchanged
+        name: grafana-dashboard-node-rsrc-use
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-apiserver unchanged
+        name: grafana-dashboard-apiserver
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-kubernetes-cluster-dashboard unchanged
+        name: grafana-dashboard-kubernetes-cluster-dashboard
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-workload unchanged
+        name: grafana-dashboard-k8s-resources-workload
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboards unchanged
+        name: grafana-dashboards
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/grafana-dashboard-k8s-resources-pod unchanged
+        name: grafana-dashboard-k8s-resources-pod
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/node-exporter reconciled. clusterrole.rbac.authorization.k8s.io/node-exporter
+          unchanged
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/prometheus-k8s reconciled.
+          clusterrole.rbac.authorization.k8s.io/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/kube-state-metrics reconciled.
+          clusterrole.rbac.authorization.k8s.io/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/resource-metrics-server-resources
+          reconciled. clusterrole.rbac.authorization.k8s.io/resource-metrics-server-resources
+          unchanged
+        name: resource-metrics-server-resources
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/prometheus-adapter reconciled.
+          clusterrole.rbac.authorization.k8s.io/prometheus-adapter unchanged
+        name: prometheus-adapter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRole
+        message: clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader
+          reconciled. clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader
+          unchanged
+        name: system:aggregated-metrics-reader
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/prometheus-adapter reconciled.
+          clusterrolebinding.rbac.authorization.k8s.io/prometheus-adapter unchanged
+        name: prometheus-adapter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/prometheus-k8s reconciled.
+          clusterrolebinding.rbac.authorization.k8s.io/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/resource-metrics:system:auth-delegator
+          reconciled. clusterrolebinding.rbac.authorization.k8s.io/resource-metrics:system:auth-delegator
+          unchanged
+        name: resource-metrics:system:auth-delegator
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/node-exporter reconciled.
+          clusterrolebinding.rbac.authorization.k8s.io/node-exporter unchanged
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: ClusterRoleBinding
+        message: clusterrolebinding.rbac.authorization.k8s.io/kube-state-metrics reconciled.
+          clusterrolebinding.rbac.authorization.k8s.io/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/prometheus-k8s reconciled. role.rbac.authorization.k8s.io/prometheus-k8s
+          unchanged
+        name: prometheus-k8s
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/prometheus-k8s-config reconciled.
+          role.rbac.authorization.k8s.io/prometheus-k8s-config unchanged
+        name: prometheus-k8s-config
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/prometheus-k8s reconciled. role.rbac.authorization.k8s.io/prometheus-k8s
+          unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: Role
+        message: role.rbac.authorization.k8s.io/prometheus-k8s reconciled. role.rbac.authorization.k8s.io/prometheus-k8s
+          unchanged
+        name: prometheus-k8s
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/prometheus-k8s reconciled.
+          rolebinding.rbac.authorization.k8s.io/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/prometheus-k8s-config reconciled.
+          rolebinding.rbac.authorization.k8s.io/prometheus-k8s-config unchanged
+        name: prometheus-k8s-config
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/prometheus-k8s reconciled.
+          rolebinding.rbac.authorization.k8s.io/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/prometheus-k8s reconciled.
+          rolebinding.rbac.authorization.k8s.io/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: rbac.authorization.k8s.io
+        hookPhase: Running
+        kind: RoleBinding
+        message: rolebinding.rbac.authorization.k8s.io/resource-metrics-auth-reader
+          reconciled. rolebinding.rbac.authorization.k8s.io/resource-metrics-auth-reader
+          unchanged
+        name: resource-metrics-auth-reader
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/grafana unchanged
+        name: grafana
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/kube-scheduler-prometheus-discovery unchanged
+        name: kube-scheduler-prometheus-discovery
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/grafana-external unchanged
+        name: grafana-external
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/kube-controller-manager-prometheus-discovery unchanged
+        name: kube-controller-manager-prometheus-discovery
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/kube-dns-prometheus-discovery unchanged
+        name: kube-dns-prometheus-discovery
+        namespace: kube-system
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/alertmanager-main unchanged
+        name: alertmanager-main
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/node-exporter unchanged
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/prometheus-adapter unchanged
+        name: prometheus-adapter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/prometheus-k8s unchanged
+        name: prometheus-k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/smtp-server unchanged
+        name: smtp-server
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/prometheus-k8s-external unchanged
+        name: prometheus-k8s-external
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: DaemonSet
+        message: daemonset.apps/node-exporter configured
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/smtp-server unchanged
+        name: smtp-server
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/prometheus-adapter configured
+        name: prometheus-adapter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/grafana configured
+        name: grafana
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apiregistration.k8s.io
+        hookPhase: Running
+        kind: APIService
+        message: apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io unchanged
+        name: v1beta1.metrics.k8s.io
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/coredns unchanged
+        name: coredns
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/grafana unchanged
+        name: grafana
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/alertmanager unchanged
+        name: alertmanager
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: Prometheus
+        message: prometheus.monitoring.coreos.com/k8s unchanged
+        name: k8s
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/kube-scheduler unchanged
+        name: kube-scheduler
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/kube-state-metrics unchanged
+        name: kube-state-metrics
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/kube-apiserver unchanged
+        name: kube-apiserver
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/kubelet unchanged
+        name: kubelet
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/kube-controller-manager unchanged
+        name: kube-controller-manager
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: Alertmanager
+        message: alertmanager.monitoring.coreos.com/main unchanged
+        name: main
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/node-exporter unchanged
+        name: node-exporter
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/prometheus unchanged
+        name: prometheus
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: PrometheusRule
+        message: prometheusrule.monitoring.coreos.com/prometheus-k8s-rules unchanged
+        name: prometheus-k8s-rules
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/prometheus-operator unchanged
+        name: prometheus-operator
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+      source:
+        path: prometheus/manifests
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+  reconciledAt: "2022-04-30T14:37:42Z"
+  resources:
+  - kind: ConfigMap
+    name: adapter-config
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-apiserver
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-cluster-total
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-controller-manager
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-coredns-dashboard
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-cluster
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-namespace
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-node
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-pod
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-workload
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-k8s-resources-workloads-namespace
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-kubelet
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-kubernetes-cluster-dashboard
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-namespace-by-pod
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-namespace-by-workload
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-node-cluster-rsrc-use
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-node-rsrc-use
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-nodes
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-persistentvolumesusage
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-pod-total
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-prometheus
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-prometheus-dashboard
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-prometheus-remote-write
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-proxy
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-scheduler
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-statefulset
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboard-workload-total
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: grafana-dashboards
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: alertmanager-main
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: grafana-config
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: grafana-datasources
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: smtp-account
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: kube-controller-manager-prometheus-discovery
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: kube-dns-prometheus-discovery
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: kube-scheduler-prometheus-discovery
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: alertmanager-main
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: grafana
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: grafana-external
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: kube-state-metrics
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: node-exporter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: prometheus-adapter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: prometheus-k8s
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: prometheus-k8s-external
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: smtp-server
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: alertmanager-main
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: grafana
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: kube-state-metrics
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: node-exporter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: prometheus-adapter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apiregistration.k8s.io
+    health:
+      message: 'Passed: all checks passed'
+      status: Healthy
+    kind: APIService
+    name: v1beta1.metrics.k8s.io
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: DaemonSet
+    name: node-exporter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: grafana
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: kube-state-metrics
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: prometheus-adapter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: smtp-server
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: Alertmanager
+    name: main
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: Prometheus
+    name: k8s
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: prometheus-k8s-rules
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: alertmanager
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: coredns
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: grafana
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: kube-apiserver
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: kube-controller-manager
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: kube-scheduler
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: kube-state-metrics
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: kubelet
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: node-exporter
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: prometheus
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: prometheus-operator
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: kube-state-metrics
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: node-exporter
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: prometheus-adapter
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: prometheus-k8s
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: resource-metrics-server-resources
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:aggregated-metrics-reader
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: kube-state-metrics
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: node-exporter
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: prometheus-adapter
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: prometheus-k8s
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: resource-metrics:system:auth-delegator
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+    namespace: default
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s-config
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: prometheus-k8s
+    namespace: default
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: prometheus-k8s
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: resource-metrics-auth-reader
+    namespace: kube-system
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: prometheus-k8s
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: prometheus-k8s-config
+    namespace: monitoring
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - carlosedp/configmap-reload:latest
+    - carlosedp/docker-smtp:v1.0.1
+    - carlosedp/kube-rbac-proxy:v0.5.0
+    - carlosedp/kube-state-metrics:v1.9.6
+    - carlosedp/prometheus-config-reloader:v0.40.0
+    - directxman12/k8s-prometheus-adapter:v0.7.0
+    - grafana/grafana:7.0.3
+    - prom/alertmanager:v0.21.0
+    - prom/node-exporter:v0.18.1
+    - prom/prometheus:v2.19.1
+  sync:
+    comparedTo:
+      destination:
+        namespace: monitoring
+        server: https://kubernetes.default.svc
+      source:
+        path: prometheus/manifests
+        repoURL: https://github.com/gaki65/k8s-manifests.git
+        targetRevision: HEAD
+    revision: a6096075a23d1654f1237f4a2d5f2e6bd0ad1751
+    status: Synced
+---
