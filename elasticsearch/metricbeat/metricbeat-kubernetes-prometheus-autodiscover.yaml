@@ -172,9 +172,9 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: 192.168.11.39
+          value: 192.168.11.32
         - name: ELASTICSEARCH_PORT
-          value: "5044"
+          value: "9200"
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
