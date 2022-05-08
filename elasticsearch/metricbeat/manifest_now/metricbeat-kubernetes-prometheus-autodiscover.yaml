@@ -49,8 +49,8 @@ data:
                   period: 30s
                 # Uncomment this to get k8s events:
                 - module: kubernetes
-                 metricsets:
-                   - event
+                  metricsets:
+                    - event
         # To enable hints based autodiscover uncomment this:
         #- type: kubernetes
         #  node: ${NODE_NAME}
