@@ -26,7 +26,7 @@ data:
             - config:
                 - module: kubernetes
                   hosts: ["kube-state-metrics:8080"]
-                  period: 10s
+                  period: 60s
                   add_metadata: true
                   metricsets:
                     - state_node
@@ -64,7 +64,7 @@ data:
                 kubernetes.annotations.prometheus.io/scrape: "true"
               config:
                 - module: prometheus
-                  period: 10s
+                  period: 60s
                   # Prometheus exporter host / port
                   hosts: ["${data.host}:${data.kubernetes.annotations.prometheus.io/port}"]
                   metrics_path: /metrics
