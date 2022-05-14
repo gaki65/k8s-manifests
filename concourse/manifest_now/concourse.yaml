@@ -420,7 +420,7 @@ spec:
               value: "30s"
             - name: CONCOURSE_TRACING_OTLP_ADDRESS
               value: "192.168.11.38:8200"
-            - name: CONCOURSE_TRACING_SERVICE_NAME
+            - name: CONCOURSE_TRACING_ENVIRONMENT
               value: "M00789_0001_concourse"
           ports:
             - name: atc
