@@ -41,6 +41,7 @@ data:
                     - state_service
                     - state_persistentvolume
                     - state_persistentvolumeclaim
+                    
                 - module: kubernetes
                   metricsets:
                     - apiserver
