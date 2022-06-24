@@ -25,6 +25,7 @@ data:
        - type: kubernetes
          node: ${NODE_NAME}
          hints.enabled: true
+         hints.default_config.enabled: false
          hints.default_config:
            type: container
            paths:
