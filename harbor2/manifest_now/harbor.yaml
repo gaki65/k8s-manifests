@@ -1562,7 +1562,7 @@ spec:
         app: "harbor"
         component: registry
       annotations:
-        co.elastic.logs/enabled: false
+        co.elastic.logs/enabled: "false"
         checksum/configmap: cf95eb42d86c342dfb994327398dcf2a9f8eda065d15981e76d7d71458d59ee9
         checksum/secret: ad95097995b93e448a5c3cce446c11b0c3b4a7027b4f37a000644d9467783177
         checksum/secret-jobservice: 68484a77832b2e80dfb2307e162dacaa09c5ad54bf971a37d0b1e86a6e269af8
