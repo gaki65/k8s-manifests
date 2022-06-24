@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-daemonset-config
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 data:
@@ -19,6 +19,9 @@ data:
         - type: kubernetes
           scope: cluster
           node: ${NODE_NAME}
+          # In large Kubernetes clusters consider setting unique to false
+          # to avoid using the leader election strategy and
+          # instead run a dedicated Metricbeat instance using a Deployment in addition to the DaemonSet
           unique: true
           templates:
             - config:
@@ -33,10 +36,15 @@ data:
                     - state_replicaset
                     - state_pod
                     - state_container
+                    - state_job
                     - state_cronjob
                     - state_resourcequota
                     - state_statefulset
                     - state_service
+                  # If `https` is used to access `kube-state-metrics`, uncomment following settings:
+                  # bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+                  # ssl.certificate_authorities:
+                  #   - /var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
                 - module: kubernetes
                   metricsets:
                     - apiserver
@@ -69,7 +77,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-daemonset-modules
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 data:
@@ -116,20 +124,21 @@ data:
       # remove ssl.verification_mode entry and use the CA, for instance:
       #ssl.certificate_authorities:
         #- /var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
-    # Currently `proxy` metricset is not supported on Openshift, comment out section
     - module: kubernetes
       metricsets:
         - proxy
       period: 10s
       host: ${NODE_NAME}
       hosts: ["localhost:10249"]
+      # If using Red Hat OpenShift should be used this `hosts` setting instead:
+      # hosts: ["localhost:29101"]
 ---
 # Deploy a Metricbeat instance per node for node metrics retrieval
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: metricbeat
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 spec:
@@ -141,16 +150,13 @@ spec:
       labels:
         k8s-app: metricbeat
     spec:
-      tolerations:
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
       serviceAccountName: metricbeat
       terminationGracePeriodSeconds: 30
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: metricbeat
-        image: docker.elastic.co/beats/metricbeat:7.14.2
+        image: docker.elastic.co/beats/metricbeat:8.2.0
         args: [
           "-c", "/etc/metricbeat.yml",
           "-e",
@@ -158,7 +164,7 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: 192.168.11.32
+          value: elasticsearch
         - name: ELASTICSEARCH_PORT
           value: "9200"
         - name: ELASTICSEARCH_USERNAME
@@ -175,8 +181,6 @@ spec:
               fieldPath: spec.nodeName
         securityContext:
           runAsUser: 0
-          # If using Red Hat OpenShift uncomment this:
-          #privileged: true
         resources:
           limits:
             memory: 200Mi
@@ -227,7 +231,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: metricbeat
-  namespace: elastic-monitoring
+  namespace: kube-system
 roleRef:
   kind: ClusterRole
   name: metricbeat
@@ -237,11 +241,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metricbeat
-  namespace: elastic-monitoring
+  namespace: kube-system
 subjects:
   - kind: ServiceAccount
     name: metricbeat
-    namespace: elastic-monitoring
+    namespace: kube-system
 roleRef:
   kind: Role
   name: metricbeat
@@ -251,11 +255,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: metricbeat-kubeadm-config
-  namespace: elastic-monitoring
+  namespace: kube-system
 subjects:
   - kind: ServiceAccount
     name: metricbeat
-    namespace: elastic-monitoring
+    namespace: kube-system
 roleRef:
   kind: Role
   name: metricbeat-kubeadm-config
@@ -291,6 +295,11 @@ rules:
   - deployments
   - replicasets
   verbs: ["get", "list", "watch"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["get", "list", "watch"]
 - apiGroups:
   - ""
   resources:
@@ -307,7 +316,7 @@ kind: Role
 metadata:
   name: metricbeat
   # should be the namespace where metricbeat is running
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 rules:
@@ -321,7 +330,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: metricbeat-kubeadm-config
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 rules:
@@ -336,7 +345,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: metricbeat
-  namespace: elastic-monitoring
+  namespace: kube-system
   labels:
     k8s-app: metricbeat
 ---
