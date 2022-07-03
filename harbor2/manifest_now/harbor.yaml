@@ -1563,7 +1563,8 @@ spec:
         component: registry
       annotations:
         co.elastic.logs/enabled: "true"
-        co.elastic.logs/module: nginx
+        # co.elastic.logs/module: nginx
+        co.elastic.logs/module: apache
         co.elastic.logs/fileset.stdout: access
         co.elastic.logs/fileset.stderr: error
         checksum/configmap: cf95eb42d86c342dfb994327398dcf2a9f8eda065d15981e76d7d71458d59ee9
