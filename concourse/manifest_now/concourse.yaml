@@ -300,7 +300,7 @@ spec:
         release: "concourse"
       annotations:
         co.elastic.logs/enabled: "true"
-        co.elastic.logs/json.keys_under_root: "true"
+        co.elastic.logs/json.keys_under_root: "false"
         checksum/secrets: 85fddc48c1081bb3a251bb84f1913dbf61283c8eb8f3cf3b1e96d0078c34577c
         checksum/config: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
         prometheus.io/scrape: "true"
