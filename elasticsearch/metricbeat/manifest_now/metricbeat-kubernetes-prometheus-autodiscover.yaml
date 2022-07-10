@@ -25,7 +25,7 @@ data:
           templates:
             - config:
                 - module: kubernetes
-                  hosts: ["kube-state-metrics.monitoring:9443"]
+                  hosts: ["kube-state-metrics.kube-system:8080"]
                   period: 60s
                   add_metadata: true
                   metricsets:
