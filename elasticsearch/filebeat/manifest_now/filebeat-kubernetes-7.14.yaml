@@ -18,6 +18,7 @@ data:
     #         matchers:
     #         - logs_path:
     #             logs_path: "/var/log/containers/"
+    monitoring.enabled: true
 
     To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
     filebeat.autodiscover:

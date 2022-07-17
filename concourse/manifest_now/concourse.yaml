@@ -311,7 +311,7 @@ spec:
       - name: concourse-migration
         image: "concourse/concourse:7.1.0"
         args: ["migrate", "--migrate-to-latest-version"]
-        env:          
+        env:
           - name: CONCOURSE_POSTGRES_HOST
             value: concourse-postgresql
           - name: CONCOURSE_POSTGRES_USER
@@ -366,7 +366,7 @@ spec:
             - name: CONCOURSE_BAGGAGECLAIM_RESPONSE_HEADER_TIMEOUT
               value: "1m"
             - name: CONCOURSE_BUILD_TRACKER_INTERVAL
-              value: "10s"            
+              value: "10s"
             - name: CONCOURSE_POSTGRES_HOST
               value: concourse-postgresql
             - name: CONCOURSE_POSTGRES_USER
@@ -504,7 +504,7 @@ spec:
         app.kubernetes.io/instance: concourse
         app.kubernetes.io/managed-by: Helm
         role: master
-    spec:      
+    spec:
       securityContext:
         fsGroup: 1001
       containers:
@@ -572,7 +572,7 @@ spec:
               mountPath: /dev/shm
             - name: data
               mountPath: /bitnami/postgresql
-              subPath: 
+              subPath:
       volumes:
         - name: dshm
           emptyDir:
@@ -654,7 +654,7 @@ spec:
                 command:
                   - "/bin/bash"
                   - "/pre-stop-hook.sh"
-          env:            
+          env:
             - name: CONCOURSE_SWEEP_INTERVAL
               value: "30s"
             - name: CONCOURSE_CONNECTION_DRAIN_TIMEOUT
