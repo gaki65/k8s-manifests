@@ -1,0 +1,112 @@
+[33mapiVersion[0m: [36mapps/v1[0m
+[33mkind[0m: [36mDeployment[0m
+[33mmetadata[0m:
+  [33mannotations[0m:
+    [37mdeployment.kubernetes.io/revision[0m: [36m"1"[0m
+    [37mkubectl.kubernetes.io/last-applied-configuration[0m: [36m|[0m
+      [36m{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"prometheus","app.kubernetes.io/name":"kube-state-metrics","app.kubernetes.io/version":"1.9.6"},"name":"kube-state-metrics","namespace":"monitoring"},"spec":{"replicas":1,"selector":{"matchLabels":{"app.kubernetes.io/name":"kube-state-metrics"}},"template":{"metadata":{"labels":{"app.kubernetes.io/name":"kube-state-metrics","app.kubernetes.io/version":"1.9.6"}},"spec":{"containers":[{"args":["--host=127.0.0.1","--port=8081","--telemetry-host=127.0.0.1","--telemetry-port=8082"],"image":"carlosedp/kube-state-metrics:v1.9.6","name":"kube-state-metrics","securityContext":{"runAsUser":65534}},{"args":["--logtostderr","--secure-listen-address=:8443","--tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256","--upstream=http://127.0.0.1:8081/"],"image":"carlosedp/kube-rbac-proxy:v0.5.0","name":"kube-rbac-proxy-main","ports":[{"containerPort":8443,"name":"https-main"}],"securityContext":{"runAsUser":65534}},{"args":["--logtostderr","--secure-listen-address=:9443","--tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256","--upstream=http://127.0.0.1:8082/"],"image":"carlosedp/kube-rbac-proxy:v0.5.0","name":"kube-rbac-proxy-self","ports":[{"containerPort":9443,"name":"https-self"}],"securityContext":{"runAsUser":65534}}],"nodeSelector":{"kubernetes.io/os":"linux"},"serviceAccountName":"kube-state-metrics"}}}}[0m
+  [33mcreationTimestamp[0m: [36m"2022-05-02T13:34:13Z"[0m
+  [33mgeneration[0m: [35m1[0m
+  [33mlabels[0m:
+    [37mapp.kubernetes.io/instance[0m: [36mprometheus[0m
+    [37mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+    [37mapp.kubernetes.io/version[0m: [36m1.9.6[0m
+  [33mname[0m: [36mkube-state-metrics[0m
+  [33mnamespace[0m: [36mmonitoring[0m
+  [33mresourceVersion[0m: [36m"15343"[0m
+  [33muid[0m: [36me5019c19-d3ba-4e0c-89eb-7adfd02de0c1[0m
+[33mspec[0m:
+  [33mprogressDeadlineSeconds[0m: [35m600[0m
+  [33mreplicas[0m: [35m1[0m
+  [33mrevisionHistoryLimit[0m: [35m10[0m
+  [33mselector[0m:
+    [37mmatchLabels[0m:
+      [37mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+  [33mstrategy[0m:
+    [37mrollingUpdate[0m:
+      [37mmaxSurge[0m: [36m25%[0m
+      [37mmaxUnavailable[0m: [36m25%[0m
+    [37mtype[0m: [36mRollingUpdate[0m
+  [33mtemplate[0m:
+    [37mmetadata[0m:
+      [37mcreationTimestamp[0m: [33mnull[0m
+      [37mlabels[0m:
+        [33mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+        [33mapp.kubernetes.io/version[0m: [36m1.9.6[0m
+    [37mspec[0m:
+      [37mcontainers[0m:
+      - [36margs:[0m
+        - [36mhost=127.0.0.1[0m
+        - [36mport=8081[0m
+        - [36mtelemetry-host=127.0.0.1[0m
+        - [36mtelemetry-port=8082[0m
+        [33mimage[0m: [36mcarlosedp/kube-state-metrics:v1.9.6[0m
+        [33mimagePullPolicy[0m: [36mIfNotPresent[0m
+        [33mname[0m: [36mkube-state-metrics[0m
+        [33mresources[0m: [36m{}[0m
+        [33msecurityContext[0m:
+          [33mrunAsUser[0m: [35m65534[0m
+        [33mterminationMessagePath[0m: [36m/dev/termination-log[0m
+        [33mterminationMessagePolicy[0m: [36mFile[0m
+      - [36margs:[0m
+        - [36mlogtostderr[0m
+        - [36msecure-listen-address=:8443[0m
+        - [36mtls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256[0m
+        - [36mupstream=http://127.0.0.1:8081/[0m
+        [33mimage[0m: [36mcarlosedp/kube-rbac-proxy:v0.5.0[0m
+        [33mimagePullPolicy[0m: [36mIfNotPresent[0m
+        [33mname[0m: [36mkube-rbac-proxy-main[0m
+        [33mports[0m:
+        - [33mcontainerPort[0m: [35m8443[0m
+          [33mname[0m: [36mhttps-main[0m
+          [33mprotocol[0m: [36mTCP[0m
+        [33mresources[0m: [36m{}[0m
+        [33msecurityContext[0m:
+          [33mrunAsUser[0m: [35m65534[0m
+        [33mterminationMessagePath[0m: [36m/dev/termination-log[0m
+        [33mterminationMessagePolicy[0m: [36mFile[0m
+      - [36margs:[0m
+        - [36mlogtostderr[0m
+        - [36msecure-listen-address=:9443[0m
+        - [36mtls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256[0m
+        - [36mupstream=http://127.0.0.1:8082/[0m
+        [33mimage[0m: [36mcarlosedp/kube-rbac-proxy:v0.5.0[0m
+        [33mimagePullPolicy[0m: [36mIfNotPresent[0m
+        [33mname[0m: [36mkube-rbac-proxy-self[0m
+        [33mports[0m:
+        - [33mcontainerPort[0m: [35m9443[0m
+          [33mname[0m: [36mhttps-self[0m
+          [33mprotocol[0m: [36mTCP[0m
+        [33mresources[0m: [36m{}[0m
+        [33msecurityContext[0m:
+          [33mrunAsUser[0m: [35m65534[0m
+        [33mterminationMessagePath[0m: [36m/dev/termination-log[0m
+        [33mterminationMessagePolicy[0m: [36mFile[0m
+      [37mdnsPolicy[0m: [36mClusterFirst[0m
+      [37mnodeSelector[0m:
+        [33mkubernetes.io/os[0m: [36mlinux[0m
+      [37mrestartPolicy[0m: [36mAlways[0m
+      [37mschedulerName[0m: [36mdefault-scheduler[0m
+      [37msecurityContext[0m: [36m{}[0m
+      [37mserviceAccount[0m: [36mkube-state-metrics[0m
+      [37mserviceAccountName[0m: [36mkube-state-metrics[0m
+      [37mterminationGracePeriodSeconds[0m: [35m30[0m
+[33mstatus[0m:
+  [33mavailableReplicas[0m: [35m1[0m
+  [33mconditions[0m:
+  - [37mlastTransitionTime[0m: [36m"2022-05-02T13:35:02Z"[0m
+    [37mlastUpdateTime[0m: [36m"2022-05-02T13:35:02Z"[0m
+    [37mmessage[0m: [36mDeployment has minimum availability.[0m
+    [37mreason[0m: [36mMinimumReplicasAvailable[0m
+    [37mstatus[0m: [36m"True"[0m
+    [37mtype[0m: [36mAvailable[0m
+  - [37mlastTransitionTime[0m: [36m"2022-05-02T13:34:13Z"[0m
+    [37mlastUpdateTime[0m: [36m"2022-05-02T13:35:02Z"[0m
+    [37mmessage[0m: [36mReplicaSet "kube-state-metrics-6bf46964c4" has successfully progressed.[0m
+    [37mreason[0m: [36mNewReplicaSetAvailable[0m
+    [37mstatus[0m: [36m"True"[0m
+    [37mtype[0m: [36mProgressing[0m
+  [33mobservedGeneration[0m: [35m1[0m
+  [33mreadyReplicas[0m: [35m1[0m
+  [33mreplicas[0m: [35m1[0m
+  [33mupdatedReplicas[0m: [35m1[0m

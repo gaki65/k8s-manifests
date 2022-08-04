@@ -1,0 +1,243 @@
+[33mapiVersion[0m: [36mv1[0m
+[33mitems[0m:
+- [33mapiVersion[0m: [36mapps/v1[0m
+  [33mkind[0m: [36mDeployment[0m
+  [33mmetadata[0m:
+    [37mannotations[0m:
+      [37mdeployment.kubernetes.io/revision[0m: [36m"1"[0m
+    [37mcreationTimestamp[0m: [36m"2022-05-02T11:22:29Z"[0m
+    [37mgeneration[0m: [35m1[0m
+    [37mlabels[0m:
+      [37mk8s-app[0m: [36mkube-dns[0m
+    [37mname[0m: [36mcoredns[0m
+    [37mnamespace[0m: [36mkube-system[0m
+    [37mresourceVersion[0m: [36m"3070"[0m
+    [37muid[0m: [36mbad182ac-f91d-4536-aae9-ce565c03baef[0m
+  [33mspec[0m:
+    [37mprogressDeadlineSeconds[0m: [35m600[0m
+    [37mreplicas[0m: [35m2[0m
+    [37mrevisionHistoryLimit[0m: [35m10[0m
+    [37mselector[0m:
+      [37mmatchLabels[0m:
+        [33mk8s-app[0m: [36mkube-dns[0m
+    [37mstrategy[0m:
+      [37mrollingUpdate[0m:
+        [33mmaxSurge[0m: [36m25%[0m
+        [33mmaxUnavailable[0m: [35m1[0m
+      [37mtype[0m: [36mRollingUpdate[0m
+    [37mtemplate[0m:
+      [37mmetadata[0m:
+        [33mcreationTimestamp[0m: [33mnull[0m
+        [33mlabels[0m:
+          [33mk8s-app[0m: [36mkube-dns[0m
+      [37mspec[0m:
+        [33mcontainers[0m:
+        - [36margs:[0m
+          - [36mconf[0m
+          - [36m/etc/coredns/Corefile[0m
+          [33mimage[0m: [36mk8s.gcr.io/coredns/coredns:v1.8.6[0m
+          [33mimagePullPolicy[0m: [36mIfNotPresent[0m
+          [33mlivenessProbe[0m:
+            [37mfailureThreshold[0m: [35m5[0m
+            [37mhttpGet[0m:
+              [37mpath[0m: [36m/health[0m
+              [37mport[0m: [35m8080[0m
+              [37mscheme[0m: [36mHTTP[0m
+            [37minitialDelaySeconds[0m: [35m60[0m
+            [37mperiodSeconds[0m: [35m10[0m
+            [37msuccessThreshold[0m: [35m1[0m
+            [37mtimeoutSeconds[0m: [35m5[0m
+          [33mname[0m: [36mcoredns[0m
+          [33mports[0m:
+          - [37mcontainerPort[0m: [35m53[0m
+            [37mname[0m: [36mdns[0m
+            [37mprotocol[0m: [36mUDP[0m
+          - [37mcontainerPort[0m: [35m53[0m
+            [37mname[0m: [36mdns-tcp[0m
+            [37mprotocol[0m: [36mTCP[0m
+          - [37mcontainerPort[0m: [35m9153[0m
+            [37mname[0m: [36mmetrics[0m
+            [37mprotocol[0m: [36mTCP[0m
+          [33mreadinessProbe[0m:
+            [37mfailureThreshold[0m: [35m3[0m
+            [37mhttpGet[0m:
+              [37mpath[0m: [36m/ready[0m
+              [37mport[0m: [35m8181[0m
+              [37mscheme[0m: [36mHTTP[0m
+            [37mperiodSeconds[0m: [35m10[0m
+            [37msuccessThreshold[0m: [35m1[0m
+            [37mtimeoutSeconds[0m: [35m1[0m
+          [33mresources[0m:
+            [37mlimits[0m:
+              [37mmemory[0m: [36m170Mi[0m
+            [37mrequests[0m:
+              [37mcpu[0m: [36m100m[0m
+              [37mmemory[0m: [36m70Mi[0m
+          [33msecurityContext[0m:
+            [37mallowPrivilegeEscalation[0m: [32mfalse[0m
+            [37mcapabilities[0m:
+              [37madd[0m:
+              - [36mNET_BIND_SERVICE[0m
+              [37mdrop[0m:
+              - [36mall[0m
+            [37mreadOnlyRootFilesystem[0m: [32mtrue[0m
+          [33mterminationMessagePath[0m: [36m/dev/termination-log[0m
+          [33mterminationMessagePolicy[0m: [36mFile[0m
+          [33mvolumeMounts[0m:
+          - [37mmountPath[0m: [36m/etc/coredns[0m
+            [37mname[0m: [36mconfig-volume[0m
+            [37mreadOnly[0m: [32mtrue[0m
+        [33mdnsPolicy[0m: [36mDefault[0m
+        [33mnodeSelector[0m:
+          [33mkubernetes.io/os[0m: [36mlinux[0m
+        [33mpriorityClassName[0m: [36msystem-cluster-critical[0m
+        [33mrestartPolicy[0m: [36mAlways[0m
+        [33mschedulerName[0m: [36mdefault-scheduler[0m
+        [33msecurityContext[0m: [36m{}[0m
+        [33mserviceAccount[0m: [36mcoredns[0m
+        [33mserviceAccountName[0m: [36mcoredns[0m
+        [33mterminationGracePeriodSeconds[0m: [35m30[0m
+        [33mtolerations[0m:
+        - [33mkey[0m: [36mCriticalAddonsOnly[0m
+          [33moperator[0m: [36mExists[0m
+        - [33meffect[0m: [36mNoSchedule[0m
+          [33mkey[0m: [36mnode-role.kubernetes.io/master[0m
+        - [33meffect[0m: [36mNoSchedule[0m
+          [33mkey[0m: [36mnode-role.kubernetes.io/control-plane[0m
+        [33mvolumes[0m:
+        - [36mconfigMap:[0m
+            [37mdefaultMode[0m: [35m420[0m
+            [37mitems[0m:
+            - [37mkey[0m: [36mCorefile[0m
+              [37mpath[0m: [36mCorefile[0m
+            [37mname[0m: [36mcoredns[0m
+          [33mname[0m: [36mconfig-volume[0m
+  [33mstatus[0m:
+    [37mavailableReplicas[0m: [35m2[0m
+    [37mconditions[0m:
+    - [37mlastTransitionTime[0m: [36m"2022-05-02T11:56:14Z"[0m
+      [37mlastUpdateTime[0m: [36m"2022-05-02T11:56:14Z"[0m
+      [37mmessage[0m: [36mDeployment has minimum availability.[0m
+      [37mreason[0m: [36mMinimumReplicasAvailable[0m
+      [37mstatus[0m: [36m"True"[0m
+      [37mtype[0m: [36mAvailable[0m
+    - [37mlastTransitionTime[0m: [36m"2022-05-02T11:56:14Z"[0m
+      [37mlastUpdateTime[0m: [36m"2022-05-02T11:56:14Z"[0m
+      [37mmessage[0m: [36mReplicaSet "coredns-64897985d" has successfully progressed.[0m
+      [37mreason[0m: [36mNewReplicaSetAvailable[0m
+      [37mstatus[0m: [36m"True"[0m
+      [37mtype[0m: [36mProgressing[0m
+    [37mobservedGeneration[0m: [35m1[0m
+    [37mreadyReplicas[0m: [35m2[0m
+    [37mreplicas[0m: [35m2[0m
+    [37mupdatedReplicas[0m: [35m2[0m
+- [33mapiVersion[0m: [36mapps/v1[0m
+  [33mkind[0m: [36mDeployment[0m
+  [33mmetadata[0m:
+    [37mannotations[0m:
+      [37mdeployment.kubernetes.io/revision[0m: [36m"1"[0m
+      [37mkubectl.kubernetes.io/last-applied-configuration[0m: [36m|[0m
+        [36m{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"exporter","app.kubernetes.io/name":"kube-state-metrics","app.kubernetes.io/version":"2.4.2"},"name":"kube-state-metrics","namespace":"kube-system"},"spec":{"replicas":1,"selector":{"matchLabels":{"app.kubernetes.io/name":"kube-state-metrics"}},"template":{"metadata":{"labels":{"app.kubernetes.io/component":"exporter","app.kubernetes.io/name":"kube-state-metrics","app.kubernetes.io/version":"2.4.2"}},"spec":{"automountServiceAccountToken":true,"containers":[{"image":"k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.4.2","livenessProbe":{"httpGet":{"path":"/healthz","port":8080},"initialDelaySeconds":5,"timeoutSeconds":5},"name":"kube-state-metrics","ports":[{"containerPort":8080,"name":"http-metrics"},{"containerPort":8081,"name":"telemetry"}],"readinessProbe":{"httpGet":{"path":"/","port":8081},"initialDelaySeconds":5,"timeoutSeconds":5},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsUser":65534}}],"nodeSelector":{"kubernetes.io/os":"linux"},"serviceAccountName":"kube-state-metrics"}}}}[0m
+    [37mcreationTimestamp[0m: [36m"2022-07-10T14:31:28Z"[0m
+    [37mgeneration[0m: [35m1[0m
+    [37mlabels[0m:
+      [37mapp.kubernetes.io/component[0m: [36mexporter[0m
+      [37mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+      [37mapp.kubernetes.io/version[0m: [36m2.4.2[0m
+    [37mname[0m: [36mkube-state-metrics[0m
+    [37mnamespace[0m: [36mkube-system[0m
+    [37mresourceVersion[0m: [36m"13160715"[0m
+    [37muid[0m: [36m2d969d2c-c58b-4f1a-903b-ef080410959e[0m
+  [33mspec[0m:
+    [37mprogressDeadlineSeconds[0m: [35m600[0m
+    [37mreplicas[0m: [35m1[0m
+    [37mrevisionHistoryLimit[0m: [35m10[0m
+    [37mselector[0m:
+      [37mmatchLabels[0m:
+        [33mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+    [37mstrategy[0m:
+      [37mrollingUpdate[0m:
+        [33mmaxSurge[0m: [36m25%[0m
+        [33mmaxUnavailable[0m: [36m25%[0m
+      [37mtype[0m: [36mRollingUpdate[0m
+    [37mtemplate[0m:
+      [37mmetadata[0m:
+        [33mcreationTimestamp[0m: [33mnull[0m
+        [33mlabels[0m:
+          [33mapp.kubernetes.io/component[0m: [36mexporter[0m
+          [33mapp.kubernetes.io/name[0m: [36mkube-state-metrics[0m
+          [33mapp.kubernetes.io/version[0m: [36m2.4.2[0m
+      [37mspec[0m:
+        [33mautomountServiceAccountToken[0m: [32mtrue[0m
+        [33mcontainers[0m:
+        - [33mimage[0m: [36mk8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.4.2[0m
+          [33mimagePullPolicy[0m: [36mIfNotPresent[0m
+          [33mlivenessProbe[0m:
+            [37mfailureThreshold[0m: [35m3[0m
+            [37mhttpGet[0m:
+              [37mpath[0m: [36m/healthz[0m
+              [37mport[0m: [35m8080[0m
+              [37mscheme[0m: [36mHTTP[0m
+            [37minitialDelaySeconds[0m: [35m5[0m
+            [37mperiodSeconds[0m: [35m10[0m
+            [37msuccessThreshold[0m: [35m1[0m
+            [37mtimeoutSeconds[0m: [35m5[0m
+          [33mname[0m: [36mkube-state-metrics[0m
+          [33mports[0m:
+          - [37mcontainerPort[0m: [35m8080[0m
+            [37mname[0m: [36mhttp-metrics[0m
+            [37mprotocol[0m: [36mTCP[0m
+          - [37mcontainerPort[0m: [35m8081[0m
+            [37mname[0m: [36mtelemetry[0m
+            [37mprotocol[0m: [36mTCP[0m
+          [33mreadinessProbe[0m:
+            [37mfailureThreshold[0m: [35m3[0m
+            [37mhttpGet[0m:
+              [37mpath[0m: [36m/[0m
+              [37mport[0m: [35m8081[0m
+              [37mscheme[0m: [36mHTTP[0m
+            [37minitialDelaySeconds[0m: [35m5[0m
+            [37mperiodSeconds[0m: [35m10[0m
+            [37msuccessThreshold[0m: [35m1[0m
+            [37mtimeoutSeconds[0m: [35m5[0m
+          [33mresources[0m: [36m{}[0m
+          [33msecurityContext[0m:
+            [37mallowPrivilegeEscalation[0m: [32mfalse[0m
+            [37mcapabilities[0m:
+              [37mdrop[0m:
+              - [36mALL[0m
+            [37mreadOnlyRootFilesystem[0m: [32mtrue[0m
+            [37mrunAsUser[0m: [35m65534[0m
+          [33mterminationMessagePath[0m: [36m/dev/termination-log[0m
+          [33mterminationMessagePolicy[0m: [36mFile[0m
+        [33mdnsPolicy[0m: [36mClusterFirst[0m
+        [33mnodeSelector[0m:
+          [33mkubernetes.io/os[0m: [36mlinux[0m
+        [33mrestartPolicy[0m: [36mAlways[0m
+        [33mschedulerName[0m: [36mdefault-scheduler[0m
+        [33msecurityContext[0m: [36m{}[0m
+        [33mserviceAccount[0m: [36mkube-state-metrics[0m
+        [33mserviceAccountName[0m: [36mkube-state-metrics[0m
+        [33mterminationGracePeriodSeconds[0m: [35m30[0m
+  [33mstatus[0m:
+    [37mavailableReplicas[0m: [35m1[0m
+    [37mconditions[0m:
+    - [37mlastTransitionTime[0m: [36m"2022-07-10T14:31:38Z"[0m
+      [37mlastUpdateTime[0m: [36m"2022-07-10T14:31:38Z"[0m
+      [37mmessage[0m: [36mDeployment has minimum availability.[0m
+      [37mreason[0m: [36mMinimumReplicasAvailable[0m
+      [37mstatus[0m: [36m"True"[0m
+      [37mtype[0m: [36mAvailable[0m
+    - [37mlastTransitionTime[0m: [36m"2022-07-10T14:31:28Z"[0m
+      [37mlastUpdateTime[0m: [36m"2022-07-10T14:31:38Z"[0m
+      [37mmessage[0m: [36mReplicaSet "kube-state-metrics-6687f6dcff" has successfully progressed.[0m
+      [37mreason[0m: [36mNewReplicaSetAvailable[0m
+      [37mstatus[0m: [36m"True"[0m
+      [37mtype[0m: [36mProgressing[0m
+    [37mobservedGeneration[0m: [35m1[0m
+    [37mreadyReplicas[0m: [35m1[0m
+    [37mreplicas[0m: [35m1[0m
+    [37mupdatedReplicas[0m: [35m1[0m
+[33mkind[0m: [36mList[0m
+[33mmetadata[0m:
+  [33mresourceVersion[0m: [36m""[0m
