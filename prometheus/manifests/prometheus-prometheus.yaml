@@ -6,8 +6,6 @@ metadata:
   name: k8s
   namespace: monitoring
 spec:
-  annotations:
-    co.elastic.logs.prometheus/enabled: "true"
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
