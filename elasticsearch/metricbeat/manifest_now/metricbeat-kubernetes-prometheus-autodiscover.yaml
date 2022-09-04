@@ -19,7 +19,7 @@ data:
     metricbeat.autodiscover:
       providers:
         - type: kubernetes
-          scope: cluster
+          scope: node
           node: ${NODE_NAME}
           unique: true
           templates:
