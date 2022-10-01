@@ -69,6 +69,7 @@ data:
                   hosts: ["${data.host}:${data.kubernetes.annotations.prometheus.io/port}"]
                   metrics_path: /metrics
         - type: kubernetes
+          host: ${NODE_NAME}
           templates:
           - config:
             - module: jolokia
