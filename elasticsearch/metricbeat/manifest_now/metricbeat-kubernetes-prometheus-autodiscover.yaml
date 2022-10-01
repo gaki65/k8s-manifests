@@ -73,7 +73,7 @@ data:
           - config:
             - module: jolokia
               metricsets: ["jmx"]
-              hosts: ["http://${data.host}:8080/jolokia"]
+              hosts: ["http://${data.host}:31669/jolokia"]
               period: 10s
               jmx.mappings:
                - mbean: "java.lang:type=Memory"
