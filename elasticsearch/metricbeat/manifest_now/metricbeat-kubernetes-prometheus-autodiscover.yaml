@@ -75,6 +75,7 @@ data:
             - module: jolokia
               metricsets: ["jmx"]
               hosts: ["http://${data.host}:31669/jolokia"]
+              namespace: "sxc"
               period: 10s
               jmx.mappings:
                - mbean: "java.lang:type=Memory"
