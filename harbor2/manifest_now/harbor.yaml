@@ -1166,6 +1166,8 @@ spec:
         app: "harbor"
         component: exporter
       annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8001"
     spec:
       securityContext:
         runAsUser: 10000
