@@ -727,6 +727,9 @@ metadata:
     release: harbor
     chart: harbor
     app: "harbor"
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8001"
 spec:
   ports:
     - name: web
