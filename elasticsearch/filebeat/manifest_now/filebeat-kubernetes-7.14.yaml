@@ -69,6 +69,7 @@ spec:
       annotations:
         co.elastic.logs/enabled: 'true'
         co.elastic.logs/module: elasticsearch
+        co.elastic.logs/exclude_lines: '^INFO'
     spec:
       tolerations:
       - key: node-role.kubernetes.io/master
