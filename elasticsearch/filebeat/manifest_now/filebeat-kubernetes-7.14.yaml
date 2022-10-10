@@ -66,6 +66,9 @@ spec:
     metadata:
       labels:
         k8s-app: filebeat
+      annotations:
+        co.elastic.logs/enabled: 'true'
+        co.elastic.logs/module: elasticsearch
     spec:
       tolerations:
       - key: node-role.kubernetes.io/master
