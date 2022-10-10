@@ -18,6 +18,7 @@ data:
     #         matchers:
     #         - logs_path:
     #             logs_path: "/var/log/containers/"
+    logging.json: true
 
     monitoring.enabled: true
     monitoring.elasticsearch:
