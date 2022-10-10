@@ -15,6 +15,11 @@ data:
       reload.enabled: false
     
     logging.json: true
+
+    monitoring.enabled: true
+    monitoring.elasticsearch:
+      hosts: ["192.168.11.33:9200","192.168.11.34:9200"]
+
     tags: ["metricsets-k8s"]
 
     metricbeat.autodiscover:
