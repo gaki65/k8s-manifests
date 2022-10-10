@@ -14,6 +14,7 @@ data:
       # Reload module configs as they change:
       reload.enabled: false
     
+    logging.json: true
     tags: ["metricsets-k8s"]
 
     metricbeat.autodiscover:
@@ -171,6 +172,8 @@ spec:
     metadata:
       labels:
         k8s-app: metricbeat
+      co.elastic.logs/enabled: 'true'
+      co.elastic.logs/json.keys_under_root: "false"
     spec:
       tolerations:
       - key: node-role.kubernetes.io/master
