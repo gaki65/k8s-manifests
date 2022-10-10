@@ -32,7 +32,7 @@ data:
             - config:
                 - module: kubernetes
                   hosts: ["kube-state-metrics.kube-system:8080"]
-                  period: 5s
+                  period: 60s
                   add_metadata: true
                   metricsets:
                     - state_node
@@ -54,7 +54,7 @@ data:
                   bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
                   ssl.certificate_authorities:
                     - /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-                  period: 5s
+                  period: 30s
                 # Uncomment this to get k8s events:
                 - module: kubernetes
                   metricsets:
@@ -70,7 +70,7 @@ data:
                 kubernetes.annotations.prometheus.io/scrape: "true"
               config:
                 - module: prometheus
-                  period: 5s
+                  period: 60s
                   # Prometheus exporter host / port
                   hosts: ["${data.host}:${data.kubernetes.annotations.prometheus.io/port}"]
                   metrics_path: /metrics
@@ -200,7 +200,7 @@ spec:
         - name: ELASTICSEARCH_HOST
           value: 192.168.11.39
         - name: ELASTICSEARCH_PORT
-          value: "5045"
+          value: "15045"
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
