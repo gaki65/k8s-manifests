@@ -20,7 +20,7 @@ data:
     #             logs_path: "/var/log/containers/"
 
     monitoring.enabled: true
-    monitoring.elasticsearch:
+    monitoring.logstash:
       hosts: ["192.168.11.39:5044"]
 
     To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
