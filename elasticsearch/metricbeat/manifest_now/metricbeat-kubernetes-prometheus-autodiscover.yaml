@@ -172,8 +172,9 @@ spec:
     metadata:
       labels:
         k8s-app: metricbeat
-      co.elastic.logs/enabled: 'true'
-      co.elastic.logs/json.keys_under_root: "false"
+      annotations:
+        co.elastic.logs/enabled: 'true'
+        co.elastic.logs/json.keys_under_root: "false"
     spec:
       tolerations:
       - key: node-role.kubernetes.io/master
