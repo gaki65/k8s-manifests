@@ -20,8 +20,6 @@ data:
     #             logs_path: "/var/log/containers/"
 
     monitoring.enabled: true
-    #  monitoring.elasticsearch:
-    #  hosts: ["192.168.11.33:9200","192.168.11.34:9200"]
     monitoring.logstash:
       hosts: ["192.168.11.39:5045"]
 
