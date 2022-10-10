@@ -21,7 +21,7 @@ data:
 
     monitoring.enabled: true
     monitoring.elasticsearch:
-      hosts: ["192.168.11.39:5044"]
+      hosts: ["192.168.11.39:5045"]
 
     To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
     filebeat.autodiscover:
