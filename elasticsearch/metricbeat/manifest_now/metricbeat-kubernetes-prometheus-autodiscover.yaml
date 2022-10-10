@@ -200,7 +200,7 @@ spec:
         - name: ELASTICSEARCH_HOST
           value: 192.168.11.39
         - name: ELASTICSEARCH_PORT
-          value: "15045"
+          value: "5045"
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
