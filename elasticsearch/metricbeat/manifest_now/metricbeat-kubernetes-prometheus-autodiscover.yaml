@@ -67,7 +67,7 @@ data:
           host: ${HOSTNAME}
           templates:
             - condition.equals:
-                kubernetes.annotations.prometheus.io/scrape: "true"
+                kubernetes.annotations.prometheus.sdi3.io/scrape: "true"
               config:
                 - module: prometheus
                   period: 60s
