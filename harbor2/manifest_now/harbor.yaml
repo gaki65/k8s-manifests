@@ -729,7 +729,7 @@ metadata:
     app: "harbor"
   annotations:
     prometheus.sdi3.io/scrape: "true"
-    prometheus.io/port: "8001"
+    prometheus.sdi3.io/port: "8001"
 spec:
   ports:
     - name: web
@@ -1053,7 +1053,7 @@ spec:
         checksum/secret: 8acf73b19406ce7bf2d0850106bd6e25410a789b32a84783bb4fca4c5b4eeb17
         checksum/secret-jobservice: dccfb0cea34206327087b131cab2045222addf519b98624b13b1ad07a8bdab2a
         prometheus.sdi3.io/scrape: "true"
-        prometheus.io/port: "8001"
+        prometheus.sdi3.io/port: "8001"
     spec:
       securityContext:
         runAsUser: 10000
@@ -1167,7 +1167,7 @@ spec:
         component: exporter
       annotations:
         prometheus.sdi3.io/scrape: "true"
-        prometheus.io/port: "8001"
+        prometheus.sdi3.io/port: "8001"
     spec:
       securityContext:
         runAsUser: 10000
