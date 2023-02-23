@@ -72,7 +72,7 @@ data:
                 - module: prometheus
                   period: 60s
                   # Prometheus exporter host / port
-                  hosts: ["${data.host}:${data.kubernetes.annotations.prometheus.sdi3.io/port}"/metrics]
+                  hosts: ["${data.host}:${data.kubernetes.annotations.prometheus.sdi3.io/port}/metrics"]
                   metrics_path: 
         - type: kubernetes
           host: ${NODE_NAME}
