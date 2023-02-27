@@ -730,6 +730,7 @@ metadata:
   annotations:
     prometheus.sdi3.io/scrape: "true"
     prometheus.sdi3.io/port: "8001"
+    prometheus.sdi3.io/path: "/metricss"
 spec:
   ports:
     - name: web
@@ -1052,9 +1053,6 @@ spec:
         checksum/configmap: 2a186116094f660a5ddffdf81de97c30ac871158f2d0e3130b3e0837cbb1af87
         checksum/secret: 8acf73b19406ce7bf2d0850106bd6e25410a789b32a84783bb4fca4c5b4eeb17
         checksum/secret-jobservice: dccfb0cea34206327087b131cab2045222addf519b98624b13b1ad07a8bdab2a
-        prometheus.sdi3.io/scrape: "true"
-        prometheus.sdi3.io/port: "8001"
-        prometheus.sdi3.io/path: "/metricss"
     spec:
       securityContext:
         runAsUser: 10000
@@ -1167,9 +1165,6 @@ spec:
         app: "harbor"
         component: exporter
       annotations:
-        prometheus.sdi3.io/scrape: "true"
-        prometheus.sdi3.io/port: "8001"
-        prometheus.sdi3.io/path: "/metrics"
     spec:
       securityContext:
         runAsUser: 10000
