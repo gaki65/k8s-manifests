@@ -13,7 +13,7 @@ data:
       path: ${path.config}/modules.d/*.yml
       # Reload module configs as they change:
       reload.enabled: false
-    
+
     logging.json: true
 
     monitoring.enabled: true
@@ -76,6 +76,7 @@ data:
                   metrics_path: ${data.kubernetes.annotations.prometheus.sdi3.io/path}
         - type: kubernetes
           host: ${NODE_NAME}
+          resource: service
           templates:
           - config:
             - module: jolokia
