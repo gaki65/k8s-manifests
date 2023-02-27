@@ -64,6 +64,7 @@ data:
         #  node: ${NODE_NAME}
         #  hints.enabled: true
         - type: kubernetes
+          resource: service
           host: ${HOSTNAME}
           templates:
             - condition.equals:
@@ -76,7 +77,6 @@ data:
                   metrics_path: ${data.kubernetes.annotations.prometheus.sdi3.io/path}
         - type: kubernetes
           host: ${NODE_NAME}
-          resource: service
           templates:
           - config:
             - module: jolokia
