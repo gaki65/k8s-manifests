@@ -9,6 +9,7 @@ data:
       otlp:
         protocols: 
           http:
+          grpc:
     processors:
     exporters:
       logging:
@@ -52,7 +53,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: opentelemetrycollector
+  name: opentelemetrycollector-http
 spec:
   ports:
   - name: http-otlp
@@ -66,7 +67,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: opentelemetrycollector-lb
+  name: opentelemetrycollector-lb-http
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.11.131
@@ -75,5 +76,34 @@ spec:
       port: 4318
       protocol: TCP
       targetPort: 4318
+  selector:
+    app.kubernetes.io/name: opentelemetrycollector
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opentelemetrycollector-grpc
+spec:
+  ports:
+  - name: grpc-otlp
+    port: 4317
+    protocol: TCP
+    targetPort: 4317
+  selector:
+    app.kubernetes.io/name: opentelemetrycollector
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opentelemetrycollector-lb-grpc
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.11.132
+  ports:
+    - name: http-otlp
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
   selector:
     app.kubernetes.io/name: opentelemetrycollector
