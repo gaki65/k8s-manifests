@@ -17,11 +17,13 @@ data:
             value: add-from-otel
             action: insert
     exporters:
-      logging:
-      otlp:
-        endpoint: "http://192.168.11.38:8200"
-        tls:
-          insecure: true
+      # logging:
+      # otlp:
+      #   endpoint: "http://192.168.11.38:8200"
+      #   tls:
+      #     insecure: true
+      elastic:
+        apm_server_url: "http://192.168.11.38:8200"
     service:
       pipelines:
         metrics:
@@ -31,7 +33,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [attributes]
-          exporters: [logging, otlp]
+          exporters: [elastic]
 ---
 apiVersion: apps/v1
 kind: Deployment
