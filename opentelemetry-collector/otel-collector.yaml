@@ -22,8 +22,9 @@ data:
       #   endpoint: "http://192.168.11.38:8200"
       #   tls:
       #     insecure: true
-      elastic:
-        apm_server_url: "http://192.168.11.38:8200"
+      elasticsearch/trace:
+        endpoints: [http://192.168.11.38:8200]
+        traces_index: trace_index
     service:
       pipelines:
         metrics:
@@ -33,7 +34,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [attributes]
-          exporters: [elastic]
+          exporters: [elasticsearch/trace]
 ---
 apiVersion: apps/v1
 kind: Deployment
