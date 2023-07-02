@@ -7,7 +7,7 @@ data:
   collector.yaml: |
     receivers:
       otlp:
-        protocols: 
+        protocols:
           http:
           grpc:
     processors:
@@ -17,10 +17,14 @@ data:
         endpoint: "http://192.168.11.38:8200"
     service:
       pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [logging, otlp]
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
+          exporters: [logging, otlp]
 ---
 apiVersion: apps/v1
 kind: Deployment
