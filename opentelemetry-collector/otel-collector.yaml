@@ -17,14 +17,14 @@ data:
             value: add-from-otel
             action: insert
     exporters:
-      # logging:
-      # otlp:
-      #   endpoint: "http://192.168.11.38:8200"
-      #   tls:
-      #     insecure: true
-      elasticsearch/trace:
-        endpoints: [http://192.168.11.38:8200]
-        traces_index: trace_index
+      logging:
+      otlp:
+        endpoint: "http://192.168.11.38:8200"
+        tls:
+          insecure: true
+      # elasticsearch/trace:
+      #   endpoints: [http://192.168.11.38:8200]
+      #   traces_index: trace_index
     service:
       pipelines:
         metrics:
@@ -34,7 +34,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [attributes]
-          exporters: [elasticsearch/trace]
+          exporters: [logging, otlp]
 ---
 apiVersion: apps/v1
 kind: Deployment
