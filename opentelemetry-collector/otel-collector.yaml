@@ -15,6 +15,9 @@ data:
         - key: service.environment
           value: add-from-otel
           action: insert
+        - key: hoge
+          value: huga
+          action: insert
     exporters:
       logging:
       otlp:
