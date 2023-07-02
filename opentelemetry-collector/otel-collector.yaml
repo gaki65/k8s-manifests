@@ -12,12 +12,10 @@ data:
           grpc:
     processors:
       attributes:
-        - key: service.environment
-          value: add-from-otel
-          action: insert
-        - key: hoge
-          value: huga
-          action: insert
+        actions:
+          - key: service.environment
+            value: add-from-otel
+            action: insert
     exporters:
       logging:
       otlp:
