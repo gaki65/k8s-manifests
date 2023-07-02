@@ -13,6 +13,8 @@ data:
     processors:
     exporters:
       logging:
+    otlp:
+      endpoint: 192.168.11.38:8200
     service:
       pipelines:
         traces:
