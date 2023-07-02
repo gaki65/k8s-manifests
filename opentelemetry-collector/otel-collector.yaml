@@ -11,6 +11,10 @@ data:
           http:
           grpc:
     processors:
+      attributes:
+        - key: service.environment
+          value: add-from-otel
+          action: insert
     exporters:
       logging:
       otlp:
@@ -25,7 +29,7 @@ data:
           exporters: [logging, otlp]
         traces:
           receivers: [otlp]
-          processors: []
+          processors: [attributes]
           exporters: [logging, otlp]
 ---
 apiVersion: apps/v1
